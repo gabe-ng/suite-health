@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+  <script src="{% static 'js/login.js' %}"></script>
+</head>
+<body>
+  <div id="loginDiv">
+    <h1>Sign in</h1>
+    <p class="span">Dont't have an account? <button id="signupButton" type="button">Sign up</button></p>
+    <form id="loginForm">
+      <input type="text" name="username" placeholder="User Name">
+      <input type="text" name="password" placeholder="Password">
+      <button type="submit" id="loginSubmit" name="submit" class="login-button">Log in</button>
+    </form>
+  </div>
+  <div id="signupDiv">
+    <h1>Sign up</h1>
+    <form id="signUpForm">
+      <input type="text" name="username" placeholder="User Name" pattern=".{1,}"   required title="1 characters minimum">
+      <input type="text" name="password" placeholder="Password" pattern=".{1,}"   required title="1 characters minimum">
+      <input type="email" name="contact" placeholder="email" pattern=".{1,}"   required title="1 characters minimum">
+      <button type="submit" name="submit" id="signUpButton">Sign Up</button>
+    </form>
+    <hr>
+  </div>
+</body>
+</html>
