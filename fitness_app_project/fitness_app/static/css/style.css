@@ -1,0 +1,23 @@
+body {
+  font-size: 18px;
+  background-color: gray;
+}
+
+nav {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 25px;
+  background-color: green;
+}
+
+aside {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+}
