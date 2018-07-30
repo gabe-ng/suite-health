@@ -48,11 +48,7 @@ def homepage(request):
 
 ############# PROFILE ###########
 
-# dashboard
+# profile
 
 def dashboard(request):
     return render(request, 'templates/dashboard.html', {})
-
-############## PROFILE ##############
-
-
