@@ -8,6 +8,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 from django.contrib.auth.models import User
 
+def landing(request):
+    return render(request, 'fitness_app/landing.html', {})
 
 def index(request):
     return render(request, 'fitness_app/index.html', {})
@@ -63,7 +65,7 @@ def signup_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('fitness_app/index.html')
 
 
 ############# HOMEPAGE ###########
