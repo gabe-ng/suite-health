@@ -14,4 +14,4 @@ def login_page(request):
 
 def homepage(request):
     return render(request, 'templates/homepage.html', {})
-    
+
