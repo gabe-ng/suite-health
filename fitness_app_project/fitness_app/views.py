@@ -6,4 +6,12 @@ from django.contrib.auth.decorators import login_required
 
 # root page
 def login_page(request):
-    return render(request, 'templates/login.html')
+    return render(request, 'templates/login.html', {})
+
+############# HOMEPAGE ###########
+
+# homepage
+
+def homepage(request):
+    return render(request, 'templates/homepage.html', {})
+    
