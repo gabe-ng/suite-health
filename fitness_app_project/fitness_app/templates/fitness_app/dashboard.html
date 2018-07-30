@@ -1,22 +1,21 @@
-{% extends 'fitness_app/base.html' %}
-{% block content %}
-<div class = "mainWrapper">
+{% extends 'fitness_app/base.html' %} {% block content %}
+<div class="mainWrapper">
 
-  <div class = "infoCreate">
-    <div class = "userInfo">
+  <div class="infoCreate">
+    <div class="userInfo">
       <h2>User Info</h2>
     </div>
-    <div class = "createBtns">
-      <button class = "create">Create Circuit</button>
-      <button class = "create">Create Meal</button>
+    <div class="createBtns">
+      <button class="create">Create Circuit</button>
+      <button class="create">Create Meal</button>
     </div>
   </div>
 
-  <div class = "healthWrapper">
-    <div class = "savedFood">
+  <div class="healthWrapper">
+    <div class="savedFood">
       <h3>Saved Food</h3>
     </div>
-    <div class = "savedWorkout">
+    <div class="savedWorkout">
       <h3>Saved Workout</h3>
     </div>
   </div>
@@ -24,15 +23,13 @@
   <div id="idModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <form class = "mealCreate">
-          {% csrf_token %}
-          {{ form.as_p}}
-          <input class = "saveForm" type = "submit" value = "Submit">Create Meal</input>
+        <form class="mealCreate">
+          {% csrf_token %} {{ form.as_p}}
+          <input class="saveForm" type="submit" value="Submit">Create Meal</input>
         </form>
-        <form class = "circuitCreate">
-          {% csrf_token %}
-          {{ form.as_p}}
-          <input class = "saveForm" type = "submit" value = "Submit">Create Circuit</input>
+        <form class="circuitCreate">
+          {% csrf_token %} {{ form.as_p}}
+          <input class="saveForm" type="submit" value="Submit">Create Circuit</input>
         </form>
       </div>
     </div>
