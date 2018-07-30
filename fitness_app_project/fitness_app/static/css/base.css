@@ -8,8 +8,8 @@ body {
   font-size: 16px;
   margin: 0;
   background-color: #ffffff;
-  color: #79b279;
-  height: 97vh;
+  color: #79B279;
+  height: 98vh;
 }
 
 h1 {
@@ -34,7 +34,12 @@ input {
   margin-top: 5px;
 }
 
-.nameLogout {
+footer{
+  text-align: center;
+  background-color: lightgrey;
+}
+
+.aHeader{
   margin: 8px 10px 0;
 }
 
@@ -92,29 +97,33 @@ Homepage
 
 .homepage-content {
   display: flex;
+  height: 100%;
+  width: 100%;
 }
 
 .feed-wrap {
   display: flex;
   flex-direction: column;
+  width: 25%;
 }
 
 .circuit-feed {
   background-color: yellow;
-  height: 50vh;
-  width: 25vw;
+  height: 100%;
+  width: 100%;
 }
 
 .meal-feed {
   background-color: green;
-  height: 50vh;
-  width: 25vw;
+  height: 100%;
+  width: 100%;
 }
 
 .search-content {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
 }
 
 .homepage-search {
@@ -133,6 +142,6 @@ Homepage
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
-  width: 75vw;
+  height: 100%;
+  width: 100%;
 }
