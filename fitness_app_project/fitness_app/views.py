@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import User, Custom_Meals, Custom_Circuit
+from .models import User, Custom_Meals, Custom_Circuit, Food
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import authenticate, login, logout
