@@ -36,7 +36,11 @@ def login_view(request):
                     login(request, user)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     return HttpResponseRedirect("/")
+=======
+                    return HttpResponseRedirect('/index')
+>>>>>>> upstream/master
 =======
                     return HttpResponseRedirect('/index')
 >>>>>>> upstream/master
@@ -65,9 +69,13 @@ def signup_view(request):
                     login(request, user)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     return HttpResponseRedirect("/")
 =======
                     return redirect('/')
+>>>>>>> upstream/master
+=======
+                    return HttpResponseRedirect('/index')
 >>>>>>> upstream/master
 =======
                     return HttpResponseRedirect('/index')
@@ -78,6 +86,7 @@ def signup_view(request):
                 HttpResponse(request, "The username and/or password is incorrect.")
     else:
 <<<<<<< HEAD
+<<<<<<< HEAD
         form = SignupForm()
         return render(request, "fitness_app/signup.html", {"form": form})
 =======
@@ -85,12 +94,21 @@ def signup_view(request):
         return render(request, 'fitness_app/login.html', {'form': form})
 >>>>>>> upstream/master
 
+=======
+        form = LoginForm()
+        return render(request, 'fitness_app/signup.html', {'form': form})
+>>>>>>> upstream/master
+
 
 def logout_view(request):
     logout(request)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     return HttpResponseRedirect("/")
+=======
+    return HttpResponseRedirect('/index')
+>>>>>>> upstream/master
 =======
     return HttpResponseRedirect('/index')
 >>>>>>> upstream/master
