@@ -19,7 +19,7 @@
     <a href="{% url 'login' %}">Login</a>
     <a href="{% url 'signup' %}">Signup</a>
     {% endif %}
-  </nav>
+  </nav> {% block content %} {% endblock %}
 
   <footer>
     All Rights Reserved, Fitness App 2018
