@@ -1,0 +1,23 @@
+{% extends 'fitness_app/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<h1>Login</h1>
+<form method="POST" action=".">
+  {% csrf_token %}
+  {{ form.as_p}}
+  <input type="submit" value="Submit" />
+</form>
+
+<<<<<<< HEAD:fitness_app_project/fitness_app/templates/fitness_app/login.html
+<h1>Sign up</h1>
+<form method="POST" action=".">
+  {% csrf_token %}
+  {{ form.as_p}}
+  <input type="submit" value="Submit" />
+</form>
+
+<!-- {% endblock %} -->
+=======
+{% endblock %}
+>>>>>>> upstream/master:fitness_app_project/fitness_app/templates/login.html

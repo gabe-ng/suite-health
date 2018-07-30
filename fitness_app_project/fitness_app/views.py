@@ -38,7 +38,7 @@ def login_view(request):
                 print("The username and/or password is incorrect.")
     else:
         form = LoginForm()
-        return render(request, 'login.html', {'form': form})
+        return render(request, 'fitness_app/login.html', {'form': form})
 
 def signup_view(request):
     if request.method == 'POST':
@@ -62,7 +62,7 @@ def signup_view(request):
         return render(request, 'signup.html', {'form': form})
 
 def logout_view(request):
-    logout(request)
+    # logout(request)
     return HttpResponseRedirect('/')
 
 
@@ -71,11 +71,11 @@ def logout_view(request):
 # homepage
 
 def homepage(request):
-    return render(request, 'templates/homepage.html')
+    return render(request, 'fitness_app/homepage.html')
 
 ############# PROFILE ###########
 
 # profile
 
-def dashboard(request):
-    return render(request, 'templates/dashboard.html', {})
+def dashboard(request, username):
+    return render(request, 'fitness_app/dashboard.html')
