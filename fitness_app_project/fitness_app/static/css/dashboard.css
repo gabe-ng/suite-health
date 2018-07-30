@@ -1,0 +1,22 @@
+.bodyWrapper{
+  display: flex;
+  flex-direction: row;
+  border: solid 1px black;
+}
+
+.userInfo{
+  border: solid 1px black;
+}
+
+.healthWrapper{
+  display: flex;
+  flex-direction: column;
+}
+
+.savedFood{
+  border: solid 1px black;
+}
+
+.savedWorkout{
+  border: solid 1px black;
+}

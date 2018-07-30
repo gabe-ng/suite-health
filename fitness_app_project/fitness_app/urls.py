@@ -9,4 +9,5 @@ urlpatterns = [
     path('/homepage', views.homepage, name="homepage"),
 
     ############# PROFILE ###############
+    path('/dashboard', views.dashboard, name="dashboard")
 ]
