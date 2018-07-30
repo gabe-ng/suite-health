@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 /*
 main stuff
 ================================================*/
-body{
-  font-family: 'Nunito', sans-serif;
+body {
+  font-family: "Nunito", sans-serif;
   font-size: 16px;
   margin: 0;
   background-color: #ffffff;
-  color: #79B279;
+  color: #79b279;
 }
 
 nav {
@@ -17,15 +17,63 @@ nav {
 
 a {
   text-decoration: none;
-  color: #B2678C;
+  color: #b2678c;
 }
 
 p {
-  margin:0;
+  margin: 0;
 }
-input{
+input {
   padding: 10px;
   margin-top: 5px;
 }
 
+/*
+Homepage
+================================================*/
+.homepage-content {
+  display: flex;
+}
 
+.feed-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.circuit-feed {
+  background-color: yellow;
+  height: 50vh;
+  width: 25vw;
+}
+
+.meal-feed {
+  background-color: green;
+  height: 50vh;
+  width: 25vw;
+}
+
+.search-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.homepage-search {
+  background-color: pink;
+  margin: 0;
+}
+
+.homepage-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.search-results {
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 75vw;
+}
