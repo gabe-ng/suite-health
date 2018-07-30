@@ -5,6 +5,7 @@ from django.shortcuts import render
 from .forms import LoginForm, SignupForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
+import requests
 
 from django.contrib.auth.models import User
 
@@ -51,7 +52,7 @@ def signup_view(request):
             p = form.cleaned_data['password']
             user = authenticate(username = u, password = p)
             if user is not None:
-                if user. is_active:
+                if user.is_active:
                     login(request, user)
                     return HttpResponseRedirect('/index')
                 else:
@@ -81,3 +82,15 @@ def homepage(request):
 
 def dashboard(request, username):
     return render(request, 'fitness_app/dashboard.html')
+
+
+################ FOOD API ############
+
+# GET
+
+def find_food(request):
+    r = requests.get(
+        "https://api.edamam.com/api/food-database/parser?ingr=steak&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401",
+        params=request.GET,
+    )
+    return Response(data)
