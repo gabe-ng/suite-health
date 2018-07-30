@@ -37,3 +37,4 @@ def login_view(request):
 def homepage(request):
     return render(request, 'templates/homepage.html', {})
 
+############## PROFILE ##############
