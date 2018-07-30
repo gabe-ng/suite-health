@@ -8,7 +8,7 @@ body {
   font-size: 16px;
   margin: 0;
   background-color: #ffffff;
-  color: #79B279;
+  color: #79b279;
   height: 98vh;
 }
 
@@ -34,12 +34,12 @@ input {
   margin-top: 5px;
 }
 
-footer{
+footer {
   text-align: center;
   background-color: lightgrey;
 }
 
-.aHeader{
+.aHeader {
   margin: 8px 10px 0;
 }
 

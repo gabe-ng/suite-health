@@ -24,7 +24,7 @@ $("#food_btn").on("click", () => {
       food_params +
       app_id +
       app_key,
-    success: response => {
+    success: response () => {
       $("#food_feed").append(`
             <ul>
             <li>Food: ${response.hints.food.label}</li>

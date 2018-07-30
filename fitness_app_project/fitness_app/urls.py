@@ -12,4 +12,6 @@ urlpatterns = [
   path('homepage/', views.homepage, name="homepage"),
   ############# PROFILE ###############
   path('user/<username>/', views.dashboard, name='dashboard'),
+  ############# APIS #################
+  path('api/food/find', views.find_food, name='find_food')
 ]
