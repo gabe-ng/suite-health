@@ -9,10 +9,13 @@
 </head>
 
 <body>
-  <div id="mainbox">
-    <h1>fitness app</h1>
+  <div>
+    <div id="mainbox">
+      <h1>fitness app</h1>
+    </div>
+    <a href="{% url 'login' %}">login</a>
+    <a href="{% url 'index' %}">continue as guest</a>
   </div>
-  <a href="{% url 'index' %}"></a>
 </body>
 
 </html>

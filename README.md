@@ -7,7 +7,7 @@ The app's purpose is to help users reach their physical goal through excercise a
 ## Wireframes and User stories :
 
 
-## Link to Heroky :
+## Link to Heroku :
 
 ## Technologies :
 
