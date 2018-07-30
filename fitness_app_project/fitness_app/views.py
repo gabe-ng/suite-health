@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import User, Custom_Meals, Custom_Circuit
+from .models import User, Custom_Meal, Custom_Circuit
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import authenticate, login, logout
@@ -37,13 +37,9 @@ def login_view(request):
 def homepage(request):
     return render(request, 'templates/homepage.html', {})
 
-<<<<<<< HEAD
-############# PROFILE ###########
+############## PROFILE ##############
 
-# dashboard
+# profile
 
 def dashboard(request):
     return render(request, 'templates/dashboard.html', {})
-=======
-############## PROFILE ##############
->>>>>>> upstream/master
