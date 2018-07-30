@@ -8,11 +8,11 @@ body {
   font-size: 16px;
   margin: 0;
   background-color: #ffffff;
-  color: #79B279;
+  color: #79b279;
   height: 97vh;
 }
 
-h1{
+h1 {
   margin: 0 0 9px 10px;
 }
 
@@ -34,59 +34,62 @@ input {
   margin-top: 5px;
 }
 
-.nameLogout{
+.nameLogout {
   margin: 8px 10px 0;
 }
 
-.contentWrapper{
+.contentWrapper {
   height: 90%;
 }
 
 /*
 Dashboard
 ================================================*/
-.mainWrapper{
+.mainWrapper {
   display: flex;
   flex-direction: row;
   border: solid 1px black;
   height: 100%;
   width: 100%;
 }
-.infoCreate{
+.infoCreate {
   width: 40%;
 }
 
-.userInfo{
+.userInfo {
   height: 94%;
   border: solid 1px black;
   margin: 2% 2% 0 1%;
   text-align: center;
 }
 
-.mealCreate, .circuitCreate{
+.mealCreate,
+.circuitCreate {
   display: none;
 }
 
-.healthWrapper{
+.healthWrapper {
   height: 90%;
   width: 58%;
   text-align: center;
 }
 
-.savedFood{
+.savedFood {
   height: 49%;
   margin-top: 2%;
   margin-bottom: 3%;
   border: solid 1px black;
 }
-.savedWorkout{
+.savedWorkout {
   height: 49%;
   margin-bottom: 4%;
   border: solid 1px black;
-=======
+}
+
 /*
 Homepage
 ================================================*/
+
 .homepage-content {
   display: flex;
 }
