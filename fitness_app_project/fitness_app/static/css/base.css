@@ -9,10 +9,16 @@ body{
   margin: 0;
   background-color: #ffffff;
   color: #79B279;
+  height: 97vh;
+}
+
+h1{
+  margin: 0 0 9px 10px;
 }
 
 nav {
   background-color: lightgrey;
+  padding-bottom: 5px;
 }
 
 a {
@@ -28,4 +34,53 @@ input{
   margin-top: 5px;
 }
 
+.nameLogout{
+  margin: 8px 10px 0;
+}
 
+.contentWrapper{
+  height: 90%;
+}
+
+/*
+Dashboard
+================================================*/
+.mainWrapper{
+  display: flex;
+  flex-direction: row;
+  border: solid 1px black;
+  height: 100%;
+  width: 100%;
+}
+.infoCreate{
+  width: 40%;
+}
+
+.userInfo{
+  height: 94%;
+  border: solid 1px black;
+  margin: 2% 2% 0 1%;
+  text-align: center;
+}
+
+.mealCreate, .circuitCreate{
+  display: none;
+}
+
+.healthWrapper{
+  height: 90%;
+  width: 58%;
+  text-align: center;
+}
+
+.savedFood{
+  height: 49%;
+  margin-top: 2%;
+  margin-bottom: 3%;
+  border: solid 1px black;
+}
+.savedWorkout{
+  height: 49%;
+  margin-bottom: 4%;
+  border: solid 1px black;
+}
