@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fitness App</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <h1>Fitness App</h1>
+  <hr />
+  {% if user.is_authenticated %}
+    <a  href="{% url 'dashboard' username=user.username %}">Hello, {{ user.username }}!</a> |
+    <a  href="{% url 'logout' %}">Logout</a>
+  {% else %}
+    <a  href="{% url 'login' %}">Login</a>
+    <a  href="{% url 'signup' %}">Signup</a>
+  {% endif %}
+
+  {% block content %}
+  {% endblock %}
+
+    <footer>
+      All Rights Reserved, Fitness App 2018
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  </body>
+</html>
