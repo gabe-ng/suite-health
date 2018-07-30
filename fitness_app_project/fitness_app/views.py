@@ -8,6 +8,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 from django.contrib.auth.models import User
 
+def landing(request):
+    return render(request, 'fitness_app/landing.html', {})
 
 def index(request):
     return render(request, "fitness_app/index.html", {})
@@ -32,7 +34,11 @@ def login_view(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
+<<<<<<< HEAD
                     return HttpResponseRedirect("/")
+=======
+                    return HttpResponseRedirect('/index')
+>>>>>>> upstream/master
                 else:
                     print("The account has been disabled.")
             else:
@@ -53,12 +59,16 @@ def signup_view(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
+<<<<<<< HEAD
                     return HttpResponseRedirect("/")
+=======
+                    return redirect('/')
+>>>>>>> upstream/master
                 else:
                     # print("The account has been disabled.")
                     HttpResponse("The account has been disabled.")
             else:
-                print("The username and/or password is incorrect.")
+                HttpResponse(request, "The username and/or password is incorrect.")
     else:
         form = SignupForm()
         return render(request, "fitness_app/signup.html", {"form": form})
@@ -66,7 +76,11 @@ def signup_view(request):
 
 def logout_view(request):
     logout(request)
+<<<<<<< HEAD
     return HttpResponseRedirect("/")
+=======
+    return HttpResponseRedirect('/index')
+>>>>>>> upstream/master
 
 
 ############# HOMEPAGE ###########
