@@ -62,7 +62,7 @@ def signup_view(request):
         return render(request, 'fitness_app/signup.html', {'form': form})
 
 def logout_view(request):
-    # logout(request)
+    logout(request)
     return HttpResponseRedirect('/')
 
 
