@@ -10,11 +10,11 @@ from django.contrib.auth.models import User
 
 
 def index(request):
-    return render(request, 'index.html', {})
+    return render(request, 'fitness_app/index.html', {})
 
 def profile(request, username):
     user = User.objects.get(username=username)
-    return render(request, 'profile.html', {'username': username})
+    return render(request, 'fitness_app/profile.html', {'username': username})
 
 
 ############## LOG IN ############
@@ -59,7 +59,7 @@ def signup_view(request):
                 print("The username and/or password is incorrect.")
     else:
         form = SignupForm()
-        return render(request, 'signup.html', {'form': form})
+        return render(request, 'fitness_app/signup.html', {'form': form})
 
 def logout_view(request):
     # logout(request)
