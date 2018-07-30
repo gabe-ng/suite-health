@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import User, Custom_Meal, Custom_Circuit
 from django.contrib.auth.decorators import login_required
 import requests
-
+from .forms import LoginForm, SignupForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -76,6 +76,14 @@ def logout_view(request):
 
 def homepage(request):
     return render(request, "fitness_app/homepage.html")
+
+
+def food_find(request):
+    r = requests.get(
+        "https://api.edamam.com/api/food-database/parser?ingr=steak&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401",
+        params=request.GET,
+    )
+    return requests.Response
 
 
 ############# PROFILE ###########

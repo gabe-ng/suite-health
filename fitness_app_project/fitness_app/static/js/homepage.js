@@ -1,25 +1,23 @@
 const app_id = "&app_id=2d7d9644";
 const app_key = "&app_key=8e911eeff3b68f04eafd1fffeaf16401";
-// let food_params = '?ingr=' +
+// "https://api.edamam.com/api/food-database/parser?ingr=steak&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401"
 
 // In the request header
 const wger_api_key = "3a799cb0dc24aa6c28713c85eb3f2be4eb6f48f0";
-// Authorization: Token 3a799cb0dc24aa6c28713c85eb3f2be4eb6f48f0
 
-const food_url_base = "https://api.edamam.com/api/food-database/parser";
+const food_url =
+  "https://api.edamam.com/api/food-database/parser?ingr=steak" +
+  app_id +
+  app_key;
 
 // food_view html rendering
 
 $("#food_btn").on("click", () => {
   $.ajax({
     type: "GET",
-    url:
-      "https://api.edamam.com/api/food-database/parser" +
-      food_params +
-      app_id +
-      app_key,
+    url: "/api/find_food",
     success: response => {
-      $("#food_feed").append(`
+      $("#search-results").append(`
             <ul>
             <li>Food: ${response.hints.food.label}</li>
             <li>Calories: ${response.hints.food.nutrients.kcal}</li>
@@ -31,3 +29,4 @@ $("#food_btn").on("click", () => {
     }
   });
 });
+// });
