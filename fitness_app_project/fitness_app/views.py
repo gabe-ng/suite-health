@@ -7,6 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 from django.contrib.auth.models import User
 
+
 ############## LOG IN ############
 
 # root page
@@ -29,6 +30,10 @@ def login_view(request):
     else:
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
 
 ############# HOMEPAGE ###########
 
