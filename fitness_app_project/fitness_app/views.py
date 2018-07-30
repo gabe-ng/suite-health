@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
-from .models import User, Custom_Meal, Custom_Circuit
-from django.contrib.auth.decorators import login_required
-
+# from .models import User, Custom_Meals, Custom_Circuit
+# from django.contrib.auth.decorators import login_required
+from .forms import LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 
 from django.contrib.auth.models import User
+
 
 ############## LOG IN ############
 
@@ -30,14 +31,22 @@ def login_view(request):
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
 
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+def profile(request, username):
+    return render(request, 'profile.html')
+
+
 ############# HOMEPAGE ###########
 
 # homepage
 
 def homepage(request):
-    return render(request, 'templates/homepage.html', {})
+    return render(request, 'templates/homepage.html')
 
-############## PROFILE ##############
+############# PROFILE ###########
 
 # profile
 

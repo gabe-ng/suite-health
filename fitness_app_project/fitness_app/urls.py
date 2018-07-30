@@ -3,9 +3,14 @@ from . import views
 
 urlpatterns = [
   ############## LOG IN ###############
+<<<<<<< HEAD
   path('', views.login, name="login"),
+=======
+  path('', views.login_view, name="login"),
+  path('logout/', views.logout_view, name="logout"),
+>>>>>>> upstream/master
   ############# HOMEPAGE ##############
-  path('/homepage', views.homepage, name="homepage"),
+  path('homepage', views.homepage, name="homepage"),
   ############# PROFILE ###############
   path('user/<username>/', views.dashboard, name='dashboard'),
 ]
