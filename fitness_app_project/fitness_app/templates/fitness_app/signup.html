@@ -1,11 +1,7 @@
-{% extends 'fitness_app/base.html' %}
-{% load staticfiles %}
-
-{% block content %}
+{% extends 'fitness_app/base.html' %} {% load staticfiles %} {% block content %}
 <h1>Sign up</h1>
 <form method="POST" action=".">
-  {% csrf_token %}
-  {{ form.as_p}}
+  {% csrf_token %} {{ form.as_p}}
   <input type="submit" value="Submit" />
 </form>
 {% endblock %}
