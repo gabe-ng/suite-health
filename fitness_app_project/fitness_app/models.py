@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class User(models.Model):
     name = models.CharField(max_length=100)
     username = models.CharField(max_length=100)
-    passworld = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
     age = models.CharField(max_length=10)
     weight = models.CharField(max_length=10)
     height = models.CharField(max_length=10)
