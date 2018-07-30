@@ -37,9 +37,13 @@ def login_view(request):
 def homepage(request):
     return render(request, 'templates/homepage.html', {})
 
+<<<<<<< HEAD
 ############# PROFILE ###########
 
 # dashboard
 
 def dashboard(request):
     return render(request, 'templates/dashboard.html', {})
+=======
+############## PROFILE ##############
+>>>>>>> upstream/master
