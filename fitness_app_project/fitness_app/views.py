@@ -53,12 +53,12 @@ def signup_view(request):
             if user is not None:
                 if user. is_active:
                     login(request, user)
-                    return HttpResponseRedirect('/')
+                    return redirect('/')
                 else:
                     # print("The account has been disabled.")
                     HttpResponse("The account has been disabled.")
             else:
-                print("The username and/or password is incorrect.")
+                HttpResponse(request, "The username and/or password is incorrect.")
     else:
         form = SignupForm()
         return render(request, 'fitness_app/signup.html', {'form': form})
