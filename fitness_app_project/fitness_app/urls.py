@@ -10,5 +10,5 @@ urlpatterns = [
   ############# HOMEPAGE ##############
   path('homepage/', views.homepage, name="homepage"),
   ############# PROFILE ###############
-  path('user/<username>/', views.dashboard, name='profile'),
+  path('user/<username>/', views.dashboard, name='dashboard'),
 ]
