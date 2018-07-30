@@ -1,0 +1,27 @@
+{% extends 'fitness_app/base.html' %} {% block content %}
+<div class="feed-wrap">
+    <section id="circuit-feed">
+
+    </section>
+    <section id="meal-feed">
+
+    </section>
+</div>
+<section id="search-content" class="search-content">
+    <section id="search" class="search">
+        <form>
+            <div class="form-group">
+                <label>Search For: </label>
+                <select class="form-control">
+                    <option value="workouts">Workouts</option>
+                    <option value="food">Food</option>
+                </select>
+            </div>
+            <input type="text" name="search" />
+            <input class="searchSubmit" type="submit" value="Search!">
+        </form>
+    </section>
+    <section id="search-results" class="search-results">
+
+    </section>
+</section>

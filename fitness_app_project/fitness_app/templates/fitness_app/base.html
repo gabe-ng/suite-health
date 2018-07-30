@@ -2,27 +2,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CatCollectr</title>
+    <title>Fitness App</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
   </head>
   <body>
-    <h1>CatCollectr</h1>
+    <h1>Fitness App</h1>
   <hr />
   {% if user.is_authenticated %}
-    <a  href="{% url 'profile' user.username %}">Hello, {{ user.username }}!</a> |
+    <a  href="{% url 'dashboard' username=user.username %}">Hello, {{ user.username }}!</a> |
     <a  href="{% url 'logout' %}">Logout</a>
   {% else %}
     <a  href="{% url 'login' %}">Login</a>
+    <a  href="{% url 'signup' %}">Signup</a>
   {% endif %}
 
-    {% block content %}
-    {% endblock %}
+  {% block content %}
+  {% endblock %}
 
     <footer>
-      All Rights Reserved, CatCollectr 2017
+      All Rights Reserved, Fitness App 2018
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="{% static 'js/app.js' %}"></script>
   </body>
 </html>

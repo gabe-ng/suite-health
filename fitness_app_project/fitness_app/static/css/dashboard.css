@@ -1,8 +1,28 @@
-.bodyWrapper{
+.mainWrapper{
   display: flex;
   flex-direction: row;
   border: solid 1px black;
 }
+
+.header{
+  border-bottom: solid 1px black;
+}
+
+.infoCreate{
+  display: flex;
+  flex-direction: column;
+}
+
+.createBtns{
+  display: flex;
+  flex-direction: row;
+}
+
+/******** Modal Create Forms ********/
+.mealCreate, .circuitCreate{
+  display: none;
+}
+
 
 .userInfo{
   border: solid 1px black;
