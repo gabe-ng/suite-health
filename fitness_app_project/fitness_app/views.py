@@ -19,3 +19,10 @@ def login_page(request):
 
 def homepage(request):
     return render(request, 'templates/homepage.html', {})
+
+############# PROFILE ###########
+
+# dashboard
+
+def dashboard(request):
+    return render(request, 'templates/dashboard.html', {})
