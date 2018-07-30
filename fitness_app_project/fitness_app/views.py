@@ -35,7 +35,11 @@ def login_view(request):
                 if user.is_active:
                     login(request, user)
 <<<<<<< HEAD
+<<<<<<< HEAD
                     return HttpResponseRedirect("/")
+=======
+                    return HttpResponseRedirect('/index')
+>>>>>>> upstream/master
 =======
                     return HttpResponseRedirect('/index')
 >>>>>>> upstream/master
@@ -60,24 +64,36 @@ def signup_view(request):
                 if user.is_active:
                     login(request, user)
 <<<<<<< HEAD
+<<<<<<< HEAD
                     return HttpResponseRedirect("/")
 =======
                     return redirect('/')
 >>>>>>> upstream/master
+=======
+                    return HttpResponseRedirect('/index')
+>>>>>>> upstream/master
                 else:
-                    # print("The account has been disabled.")
-                    HttpResponse("The account has been disabled.")
+                    print("The account has been disabled.")
             else:
                 HttpResponse(request, "The username and/or password is incorrect.")
     else:
+<<<<<<< HEAD
         form = SignupForm()
         return render(request, "fitness_app/signup.html", {"form": form})
+=======
+        form = LoginForm()
+        return render(request, 'fitness_app/login.html', {'form': form})
+>>>>>>> upstream/master
 
 
 def logout_view(request):
     logout(request)
 <<<<<<< HEAD
+<<<<<<< HEAD
     return HttpResponseRedirect("/")
+=======
+    return HttpResponseRedirect('/index')
+>>>>>>> upstream/master
 =======
     return HttpResponseRedirect('/index')
 >>>>>>> upstream/master
