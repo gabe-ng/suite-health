@@ -1,38 +1,27 @@
 {% extends 'fitness_app/base.html' %} {% block content %}
-<!-- <header>
-    <nav class="navbar">
-        <h2>Fitness App</h2>
-        <div id="menu-container" class="menu-container">
-            JS rendered data varying on user log in
-        </div>
-    </nav>
-</header> -->
-<main>
-    <div class="feed-wrap">
-        <section id="circuit-feed">
+<div class="feed-wrap">
+    <section id="circuit-feed">
 
-        </section>
-        <section id="meal-feed">
-
-        </section>
-    </div>
-    <section id="search-content" class="search-content">
-        <section id="search" class="search">
-            <form>
-                <div class="form-group">
-                    <label>Search For: </label>
-                    <select class="form-control">
-                        <option value="workouts">Workouts</option>
-                        <option value="food">Food</option>
-                    </select>
-                </div>
-                <input type="text" name="search" />
-                <input class="searchSubmit" type="submit" value="Search!">
-            </form>
-        </section>
-        <section id="search-results" class="search-results">
-
-        </section>
     </section>
-</main>
-{% endblock %}
+    <section id="meal-feed">
+
+    </section>
+</div>
+<section id="search-content" class="search-content">
+    <section id="search" class="search">
+        <form>
+            <div class="form-group">
+                <label>Search For: </label>
+                <select class="form-control">
+                    <option value="workouts">Workouts</option>
+                    <option value="food">Food</option>
+                </select>
+            </div>
+            <input type="text" name="search" />
+            <input class="searchSubmit" type="submit" value="Search!">
+        </form>
+    </section>
+    <section id="search-results" class="search-results">
+
+    </section>
+</section>
