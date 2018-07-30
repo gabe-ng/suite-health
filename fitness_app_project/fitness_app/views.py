@@ -31,7 +31,7 @@ def login_view(request):
             p = form.cleaned_data['password']
             user = authenticate(username = u, password = p)
             if user is not None:
-                if user. is_active:
+                if user.is_active:
                     login(request, user)
                     return HttpResponseRedirect('/index')
                 else:
