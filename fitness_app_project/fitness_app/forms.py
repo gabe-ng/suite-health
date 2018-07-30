@@ -3,8 +3,6 @@ from django import forms
 class LoginForm(forms.Form):
     username = forms.CharField(label="User Name", max_length=64)
     password = forms.CharField(widget=forms.PasswordInput())
-<<<<<<< HEAD
-=======
 
 class SignupForm(forms.Form):
     username = forms.CharField(label="User Name", max_length=64)
@@ -15,5 +13,3 @@ class SignupForm(forms.Form):
 # class CreateCircuitForm(forms.form):
 
 # class CreateMealForm(forms.form):
-
->>>>>>> upstream/master
