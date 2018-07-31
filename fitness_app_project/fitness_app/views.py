@@ -6,6 +6,7 @@ from .forms import LoginForm, SignupForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 import requests
+from django.http.response import JsonResponse
 
 from django.contrib.auth.models import User
 
@@ -90,13 +91,9 @@ def dashboard(request, username):
 
 def find_food(request):
     r = requests.get(
-        "https://api.edamam.com/api/food-database/parser?ingr=steak&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401",
-        params=request.GET,
-    )
-<<<<<<< HEAD
-    return r.content
-||||||| merged common ancestors
-    return Response(data)
-=======
-    return Response(data)
->>>>>>> 85ed77af535dd45ec0f2c6cc057fddd47a5e1643
+        "https://api.edamam.com/api/food-database/parser?ingr=steak&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401")
+    return JsonResponse({'success':False, 'errorMsg':errorMsg}
+    # return r.json()
+
+
+
