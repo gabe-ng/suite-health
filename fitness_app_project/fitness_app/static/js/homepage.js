@@ -61,7 +61,6 @@ $("input[type='submit']").on("click", function(e) {
     $.ajax({
       type: "GET",
       url: "/api/workout/find",
-      // data: "workout":"workout",
       success: renderWorkoutSuccess,
       error: error
     });
@@ -69,15 +68,24 @@ $("input[type='submit']").on("click", function(e) {
 });
 
 const test = () => {
+  let limit = $("input[name='search']").val();
   console.log("invoked");
   $.ajax({
     type: "GET",
-    url: "/api/workout/find",
-    data: ,
+    url: "/api/workout/find/" + limit,
     success: response => {
       console.log(response);
-      $("#search-results").append(`<p>${response}</p>`);
+      $("#search-results").append(`<p>${response.results[0].id}</p>
+      <p>${response.results[0].description}</p>`);
     },
     error: error
   });
 };
+
+const saveWorkout = () => {
+    let 
+    $.ajax({
+        method: "POST",
+        url: `api/workout//save`
+    })
+}

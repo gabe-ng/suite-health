@@ -13,7 +13,8 @@ urlpatterns = [
     ############# PROFILE ###############
     path('user/<username>/', views.dashboard, name='dashboard'),
     ############# FOOD API #################
-    path('api/food/find', views.find_food, name='find_food'),
+    path('api/food/find/', views.find_food, name='find_food'),
     ############# WORKOUT API #################
-    path('api/workout/find', views.find_workout, name='find_workout'),
+    path('api/workout/find/<slug:limit>', views.find_workout, name='find_workout'),
+    path('api/workout/<int:pk>/save', views.save_workout, name='save_workout'),
 ]
