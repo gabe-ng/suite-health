@@ -73,6 +73,7 @@ const test = () => {
   $.ajax({
     type: "GET",
     url: "/api/workout/find",
+    data:,
     success: response => {
       console.log(response);
       $("#search-results").append(`<p>${response}</p>`);
