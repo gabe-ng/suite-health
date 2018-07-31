@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Custom_Meal, Custom_Circuit, Food
+from .models import User, Profile, Custom_Meal, Custom_Circuit, Food
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

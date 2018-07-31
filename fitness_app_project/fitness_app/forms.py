@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import User
 
 class LoginForm(forms.Form):
     username = forms.CharField(label="User Name", max_length=64)
@@ -9,8 +10,9 @@ class SignupForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput())
     confirm_password = forms.CharField(widget=forms.PasswordInput())
 
-    class Meta:
-      fields = ['username', 'password', 'password2']
+    # class Meta:
+    #   model = User
+    #   fields = ['username', 'password', 'confirm_password']
 
 
 # class CreateCircuitForm(forms.form):
