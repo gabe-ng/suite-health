@@ -45,7 +45,7 @@ const renderWorkoutSuccess = response => {
 
 // ####################################### AJAX CALLS ############################################
 
-$("input[type='submit']").on("click", function(e) {
+$("#find-button").on("click", function(e) {
   e.preventDefault();
   if ($(".form-control").val() === "food") {
     // let food = $("input[name='search']").val();
@@ -82,10 +82,10 @@ const test = () => {
   });
 };
 
-const saveWorkout = () => {
-    $.ajax({
-        method: "POST",
-        url: `api/workout//save`,
-        // success:
-    });
-  }
+// const saveWorkout = () => {
+//     let
+//     $.ajax({
+//         method: "POST",
+//         url: `api/workout//save`
+//     })
+// }
