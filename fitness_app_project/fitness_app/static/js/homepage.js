@@ -30,7 +30,7 @@ const renderFoodSuccess = response => {
             <li>Fat: ${response.hints.food.nutrients.fat}</li>
             <li>Carbs: ${response.hints.food.nutrients.carbs}</li>
             </ul>
-            `);
+  `);
 };
 
 const renderWorkoutSuccess = response => {

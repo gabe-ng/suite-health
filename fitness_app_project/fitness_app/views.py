@@ -48,7 +48,6 @@ def login_view(request):
         form = LoginForm()
         return render(request, "fitness_app/login.html", {"form": form})
 
-
 def signup_view(request):
     # POST Request for a new user
     if request.method == 'POST':
@@ -80,10 +79,8 @@ def logout_view(request):
 
 # homepage
 
-
 def homepage(request):
     return render(request, "fitness_app/homepage.html")
-
 
 ############# PROFILE ###########
 
@@ -91,7 +88,6 @@ def homepage(request):
 
 def dashboard(request, username):
     return render(request, 'fitness_app/dashboard.html')
-
 
 ################ WORKOUT API ############
 
