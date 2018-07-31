@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 # from .models import User, Custom_Meals, Custom_Circuit
 # from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, SignupForm
+from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 import requests
