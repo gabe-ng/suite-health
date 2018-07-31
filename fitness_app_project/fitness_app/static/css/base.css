@@ -68,7 +68,8 @@ Dashboard
   text-align: center;
 }
 
-.mealCreate, .circuitCreate {
+.mealCreate,
+.circuitCreate {
   display: none;
 }
 
