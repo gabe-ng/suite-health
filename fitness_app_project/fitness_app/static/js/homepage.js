@@ -82,10 +82,10 @@ const test = () => {
   });
 };
 
-const saveWorkout = () => {
-    let 
-    $.ajax({
-        method: "POST",
-        url: `api/workout//save`
-    })
-}
+// const saveWorkout = () => {
+//     let
+//     $.ajax({
+//         method: "POST",
+//         url: `api/workout//save`
+//     })
+// }
