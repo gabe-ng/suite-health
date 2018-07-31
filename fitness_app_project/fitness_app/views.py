@@ -60,7 +60,7 @@ def signup_view(request):
             else:
                 print("The username and/or password is incorrect.")
     else:
-        form = LoginForm()
+        form = SignupForm()
         return render(request, 'fitness_app/signup.html', {'form': form})
 
 
