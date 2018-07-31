@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
+
 # from .models import User
 # from .models import User, Custom_Meals, Custom_Circuit
 # from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, SignupForm
-from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 import requests
@@ -51,7 +51,7 @@ def login_view(request):
 
 
 def signup_view(request):
-# POST Request for a new user
+   # POST Request for a new user
   if request.method == 'POST':
     # Verify passwords
     if request.POST['password'] == request.POST['confirm_password']:
@@ -110,3 +110,5 @@ def find_workout(request):
 def find_food(request):
     r = requests.get("https://wger.de/api/v2/exercise/?limit=1")
     r.content
+
+
