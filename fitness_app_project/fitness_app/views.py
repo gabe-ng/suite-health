@@ -51,24 +51,25 @@ def login_view(request):
 
 
 def signup_view(request):
-   # POST Request for a new user
-  if request.method == 'POST':
-    # Verify passwords
-    if request.POST['password'] == request.POST['confirm_password']:
-      try:
-        # If Username already exists, render form with error
-        user = User.objects.get(username=request.POST['username'])
-        return render(request, 'fitness_app/signup.html', {'error': 'Username already in use'})
-      # If user does not exist, create and login new user then redirect to home
-      except User.DoesNotExist:
-        user = User.objects.create_user(request.POST['username'], password=request.POST['password'])
-        auth.login(request, user)
-        return redirect('/index')
+    # POST Request for a new user
+    if request.method == 'POST':
+        # Verify passwords
+        if request.POST['password'] == request.POST['confirm_password']:
+            try:
+                # If Username already exists, render form with error
+                user = User.objects.get(username=request.POST['username'])
+                return render(request, 'fitness_app/signup.html', {'error': 'Username already in use'})
+            # If user does not exist, create and login new user then redirect to home
+            except User.DoesNotExist:
+                user = User.objects.create_user(
+                    request.POST['username'], password=request.POST['password'])
+                auth.login(request, user)
+                return redirect('/index')
+        else:
+            return render(request, 'fitness_app/signup.html', {'error': 'Passwords do not match'})
+    # GET request for empty sign up form
     else:
-      return render(request, 'fitness_app/signup.html', {'error': 'Passwords do not match'})
-  # GET request for empty sign up form
-  else:
-    return render(request, 'fitness_app/signup.html')
+        return render(request, 'fitness_app/signup.html')
 
 
 def logout_view(request):
@@ -111,8 +112,7 @@ def save_workout(request):
 
 ################ FOOD API ############
 
+
 def find_food(request):
     r = requests.get("https://wger.de/api/v2/exercise/?limit=1")
     r.content
-
-
