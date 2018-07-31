@@ -15,17 +15,14 @@ const food_url_base = "https://api.edamam.com/api/food-database/parser";
 
 // muscle endpoint
 // exercise category
+const error = (err1, err2, err3) => {
+  console.log(err1);
+  console.log(err2);
+  console.log(err3);
+};
 
-$("#food_btn").on("click", () => {
-  $.ajax({
-    type: "GET",
-    url:
-      "https://api.edamam.com/api/food-database/parser" +
-      food_params +
-      app_id +
-      app_key,
-    success: response () => {
-      $("#food_feed").append(`
+const renderFoodSuccess = response => {
+  $("#search_results").append(`
             <ul>
             <li>Food: ${response.hints.food.label}</li>
             <li>Calories: ${response.hints.food.nutrients.kcal}</li>
@@ -34,6 +31,39 @@ $("#food_btn").on("click", () => {
             <li>Carbs: ${response.hints.food.nutrients.carbs}</li>
             </ul>
             `);
-    }
-  });
+};
+
+const renderWorkoutSuccess = response => {
+  $("#search_results").append(`
+          <ul>
+            <li>Author: ${response.license_author}</li>
+            <li>Name: ${response.name}</li>
+            <li>Description: ${resonse.description}</li>
+          </ul>
+    `);
+};
+
+// ####################################### AJAX CALLS ############################################
+
+$("input[type='submit']").on("click", function(e) {
+  e.preventDefault();
+  if ($(".form-control").val() === "food") {
+    // let food = $("input[name='search']").val();
+    $.ajax({
+      type: "GET",
+      url: "/api/food/find",
+      // data: "food":"food",
+      success: renderFoodSuccess,
+      error: error
+    });
+  } else if ($(".form-control").val() === "workouts") {
+    // let workout = $("input[name='search']").val();
+    $.ajax({
+      type: "GET",
+      url: "/api/workout/find",
+      // data: "workout":"workout",
+      success: renderWorkoutSuccess,
+      error: error
+    });
+  }
 });

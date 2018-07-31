@@ -89,9 +89,6 @@ def homepage(request):
 
 
 def dashboard(request, username):
-<<<<<<< HEAD
-    return render(request, "fitness_app/dashboard.html")
-=======
     return render(request, 'fitness_app/dashboard.html')
 
 
@@ -100,9 +97,16 @@ def dashboard(request, username):
 # GET
 
 def find_food(request):
+    parameters = {"ingr": "steak", "id": "2d7d9644",
+                  "key": "2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401"}
     r = requests.get(
-        "https://api.edamam.com/api/food-database/parser?ingr=steak&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401",
-        params=request.GET,
+        # "https://api.edamam.com/api/food-database/parser?ingr=steak&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401",
+        "https://api.edamam.com/api/food-database/parser?",
+        params=parameters,
     )
     return Response(data)
->>>>>>> upstream/master
+
+
+def find_workout(request):
+    r = requests.get("https://wger.de/api/v2/exercise/", params={})
+    return Response(data)
