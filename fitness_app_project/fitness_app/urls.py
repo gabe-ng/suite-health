@@ -15,5 +15,5 @@ urlpatterns = [
     ############# FOOD API #################
     path('api/food/find', views.find_food, name='find_food'),
     ############# WORKOUT API #################
-
+    path('api/workout/find', views.find_workout, name='find_workout'),
 ]
