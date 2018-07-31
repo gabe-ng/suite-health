@@ -90,7 +90,6 @@ def homepage(request):
 
 # profile
 
-
 def dashboard(request, username):
     return render(request, 'fitness_app/dashboard.html')
 
