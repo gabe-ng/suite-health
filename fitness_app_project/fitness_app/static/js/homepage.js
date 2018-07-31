@@ -83,7 +83,7 @@ const test = () => {
 };
 
 const saveWorkout = () => {
-    let 
+    let
     $.ajax({
         method: "POST",
         url: `api/workout//save`
