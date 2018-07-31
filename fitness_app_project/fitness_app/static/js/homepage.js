@@ -1,13 +1,3 @@
-const app_id = "&app_id=2d7d9644";
-const app_key = "&app_key=8e911eeff3b68f04eafd1fffeaf16401";
-// let food_params = '?ingr=' +
-
-// In the request header
-const wger_api_key = "3a799cb0dc24aa6c28713c85eb3f2be4eb6f48f0";
-// Authorization: Token 3a799cb0dc24aa6c28713c85eb3f2be4eb6f48f0
-
-const food_url_base = "https://api.edamam.com/api/food-database/parser";
-
 // sample url if a user searched for 'red apple'. the '%20' represents a space.
 // 'https://api.edamam.com/api/food-database/parser?ingr=red%20apple&app_id={your app_id}&app_key={your app_key}'
 // this copy and paste the below URL into Postman if you want to have a look at the responses.
@@ -40,15 +30,22 @@ const error = (err1, err2, err3) => {
 };
 
 const renderFoodSuccess = response => {
-  $("#search_results").append(`
-            <ul>
-            <li>Food: ${response.hints.food.label}</li>
-            <li>Calories: ${response.hints.food.nutrients.kcal}</li>
-            <li>Protein: ${response.hints.food.nutrients.protein}</li>
-            <li>Fat: ${response.hints.food.nutrients.fat}</li>
-            <li>Carbs: ${response.hints.food.nutrients.carbs}</li>
-            </ul>
-            `);
+  console.log(response);
+  $("#search-results").empty();
+  response.hints.forEach(food => {
+    $("#search-results").append(`
+        <div>
+            <h6>Name: ${food.food.label}</h6>
+            <ul id="${food.food.id}"></ul>
+        </div>
+    `);
+    for (let nutrient in food.food.nutrients) {
+      let measure = food.food.nutrients[nutrient];
+      $(`#${food.food.id}`).append(`
+            <li>${nutrient} : ${measure}</li>
+        `);
+    }
+  });
 };
 
 const renderWorkoutSuccess = response => {
@@ -73,11 +70,13 @@ const renderWorkoutSuccess = response => {
 
 $("#find-button").on("click", function(e) {
   e.preventDefault();
-  if ($(".form-control").val() === "food") {
-    let food = $("input[name='search']").val();
+  if ($("#search-type").val() === "food") {
+    let foodInput = $("#food-selection").val();
+    let food = foodInput.replace(/" "/g, "%20");
+    console.log(food);
     $.ajax({
       type: "GET",
-      url: "/api/food/find/",
+      url: "/api/food/find/" + food,
       success: renderFoodSuccess,
       error: error
     });
@@ -92,8 +91,6 @@ $("#find-button").on("click", function(e) {
     });
   }
 });
-
-const test = () => {};
 
 // const saveWorkout = () => {
 //     let
