@@ -110,5 +110,3 @@ def find_workout(request):
 def find_food(request):
     r = requests.get("https://wger.de/api/v2/exercise/?limit=1")
     r.content
-
-
