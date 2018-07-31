@@ -51,25 +51,25 @@ def login_view(request):
 
 
 def signup_view(request):
-# POST Request for a new user
-  if request.method == 'POST':
-    # Verify passwords
-    if request.POST['password'] == request.POST['confirm_password']:
-      try:
-        # If Username already exists, render form with error
-        user = User.objects.get(username=request.POST['username'])
-        return render(request, 'fitness_app/signup.html', {'error': 'Username already in use'})
-      # If user does not exist, create and login new user then redirect to home
-      except User.DoesNotExist:
-        user = User.objects.create_user(
-            request.POST['username'], password=request.POST['password'])
-        auth.login(request, user)
-        return redirect('/index')
+    # POST Request for a new user
+    if request.method == 'POST':
+        # Verify passwords
+        if request.POST['password'] == request.POST['confirm_password']:
+            try:
+                # If Username already exists, render form with error
+                user = User.objects.get(username=request.POST['username'])
+                return render(request, 'fitness_app/signup.html', {'error': 'Username already in use'})
+            # If user does not exist, create and login new user then redirect to home
+            except User.DoesNotExist:
+                user = User.objects.create_user(
+                    request.POST['username'], password=request.POST['password'])
+                auth.login(request, user)
+                return redirect('/index')
+        else:
+            return render(request, 'fitness_app/signup.html', {'error': 'Passwords do not match'})
+    # GET request for empty sign up form
     else:
-      return render(request, 'fitness_app/signup.html', {'error': 'Passwords do not match'})
-  # GET request for empty sign up form
-  else:
-    return render(request, 'fitness_app/signup.html')
+        return render(request, 'fitness_app/signup.html')
 
 
 def logout_view(request):
@@ -99,48 +99,16 @@ def dashboard(request, username):
 
 # GET
 
-<< << << < HEAD
-
-
-def find_food(request):
-    r = requests.get(
-        "https://api.edamam.com/api/food-database/parser?ingr=steak&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401")
-    return JsonResponse({'success': False, 'errorMsg': errorMsg}
-    # return r.json()
-== == == =
 def find_workout(request):
-    url='https://wger.de/api/v2/exercise/'
-    r=requests.get(url=url)
+    url = 'https://wger.de/api/v2/exercise/'
+    r = requests.get(url=url)
     r
     r.content
     return HttpResponse(r)
->> >>>> > upstream/master
 
 ################ FOOD API ############
 
+
 def find_food(request):
-    r=requests.get("https://wger.de/api/v2/exercise/?limit=1")
+    r = requests.get("https://wger.de/api/v2/exercise/?limit=1")
     r.content
-
-
-<< << << < HEAD
-def find_workout(request):
-    r=requests.get("https://wger.de/api/v2/exercise/", params={})
-    return r.content
-
-
-        # In the python console
-        # >> > import requests
-        # >> > import json
-        # >> > from pprint import pprint
-        # >> >
-        # >> > url='https://wger.de/api/v2/....'
-        # >> > data='{"key": "value"}'
-        # >> > headers={'Accept': 'application/json',
-        #               'Authorization': 'Token 12345...'}
-        # >> > r=requests.patch(url=url, data=data, headers=headers)
-        # >> > r
-        # >> > r.content
-        # >> > pprint(json.loads(r.content))
-== == == =
->>>>>> > upstream/master
