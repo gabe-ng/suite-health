@@ -67,3 +67,17 @@ $("input[type='submit']").on("click", function(e) {
     });
   }
 });
+
+const test = () => {
+  console.log("invoked");
+  $.ajax({
+    type: "GET",
+    url: "/api/workout/find",
+    data:,
+    success: response => {
+      console.log(response);
+      $("#search-results").append(`<p>${response}</p>`);
+    },
+    error: error
+  });
+};
