@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-
 # from .models import User
 # from .models import User, Custom_Meals, Custom_Circuit
 # from django.contrib.auth.decorators import login_required
@@ -99,9 +98,8 @@ def dashboard(request, username):
 
 # GET
 
-def find_workout(request, limit):
-    print('in views',limit)
-    url = 'https://wger.de/api/v2/exercise/?limit='+ limit
+def find_workout(request, muscle):
+    url = 'https://wger.de/api/v2/exercise/?language=2&muscles=' + muscle
     r = requests.get(url=url)
     return HttpResponse(r, content_type='application/json')
 
@@ -112,7 +110,8 @@ def save_workout(request):
 
 ################ FOOD API ############
 
-
-def find_food(request):
-    r = requests.get("https://wger.de/api/v2/exercise/?limit=1")
-    r.content
+def find_food(request, food):
+    print (food)
+    url = 'https://api.edamam.com/api/food-database/parser?ingr='+ food + '&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401'
+    r = requests.get(url=url)
+    return HttpResponse(r, content_type='application/json')
