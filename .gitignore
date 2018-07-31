@@ -95,3 +95,4 @@ venv.bak/
 ### Python Patch ###
 .venv/
 # End of https://www.gitignore.io/api/django,python
+.vscode/
