@@ -7,9 +7,10 @@ from .forms import LoginForm, SignupForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 import requests
+import json
 from django.http.response import JsonResponse
-
 from django.contrib.auth.models import User
+from pprint import pprint
 
 
 def landing(request):
@@ -93,18 +94,21 @@ def dashboard(request, username):
     return render(request, 'fitness_app/dashboard.html')
 
 
-################ FOOD API ############
+################ WORKOUT API ############
 
 # GET
 
-def find_food(request):
-    r = requests.get(
-        "https://api.edamam.com/api/food-database/parser?ingr=steak&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401")
-    return JsonResponse({'success':False, 'errorMsg':errorMsg}
-    # return r.json()
-
-
-
 def find_workout(request):
-    r = requests.get("https://wger.de/api/v2/exercise/", params={})
-    return r.content
+    url = 'https://wger.de/api/v2/exercise/?limit=3'
+    r = requests.get(url=url)
+    r
+    r.content
+    return HttpResponse(r)
+
+################ FOOD API ############
+
+def find_food(request):
+    r = requests.get("https://wger.de/api/v2/exercise/?limit=1")
+    r.content
+
+
