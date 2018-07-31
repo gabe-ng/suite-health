@@ -65,13 +65,8 @@ def signup_view(request):
             else:
                 print("The username and/or password is incorrect.")
     else:
-<<<<<<< HEAD
-        form = LoginForm()
-        return render(request, "fitness_app/signup.html", {"form": form})
-=======
         form = SignupForm()
         return render(request, 'fitness_app/signup.html', {'form': form})
->>>>>>> upstream/master
 
 
 def logout_view(request):
@@ -109,13 +104,9 @@ def find_food(request):
         "https://api.edamam.com/api/food-database/parser?",
         params=parameters,
     )
-<<<<<<< HEAD
     return Response(data)
 
 
 def find_workout(request):
     r = requests.get("https://wger.de/api/v2/exercise/", params={})
-=======
     return r.content
->>>>>>> upstream/master
-    return Response(data)
