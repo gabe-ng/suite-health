@@ -13,6 +13,24 @@ const food_url_base = "https://api.edamam.com/api/food-database/parser";
 // this copy and paste the below URL into Postman if you want to have a look at the responses.
 // 'https://api.edamam.com/api/food-database/parser?ingr=red%20apple&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401'
 
+let muscles = {
+  1: "Biceps Long Head",
+  2: "Deltiods",
+  3: "Serratus Anterior",
+  4: "Chest",
+  5: "Triceps",
+  6: "Abdominals",
+  7: "Calves",
+  8: "Glutes",
+  9: "Traps",
+  10: "Quadriceps",
+  11: "Hamstring",
+  12: "Lats",
+  13: "Bicep Short Head",
+  14: "Obliques",
+  15: "Calves"
+};
+
 // muscle endpoint
 // exercise category
 const error = (err1, err2, err3) => {
@@ -34,13 +52,21 @@ const renderFoodSuccess = response => {
 };
 
 const renderWorkoutSuccess = response => {
-  $("#search_results").append(`
-          <ul>
-            <li>Author: ${response.license_author}</li>
-            <li>Name: ${response.name}</li>
-            <li>Description: ${resonse.description}</li>
-          </ul>
+  $("#search-results").empty();
+  response.results.forEach(workout => {
+    console.log(workout.id);
+    $("#search-results").append(`
+          <div id="${workout.id} class="rendered-workouts">
+            <h6>Author: ${workout.license_author}</h6>
+            <p>Name: ${workout.name}</p>
+            <p>Description: ${workout.description}</p>
+            <ul id="muscle-group-${workout.id}"></ul>
+          </div>
     `);
+    workout.muscles.forEach(muscleNum => {
+      $(`#muscle-group-${workout.id}`).append(`<li>${muscles[muscleNum]}</li>`);
+    });
+  });
 };
 
 // ####################################### AJAX CALLS ############################################
@@ -48,39 +74,26 @@ const renderWorkoutSuccess = response => {
 $("#find-button").on("click", function(e) {
   e.preventDefault();
   if ($(".form-control").val() === "food") {
-    // let food = $("input[name='search']").val();
+    let food = $("input[name='search']").val();
     $.ajax({
       type: "GET",
-      url: "/api/food/find",
-      // data: "food":"food",
+      url: "/api/food/find/",
       success: renderFoodSuccess,
       error: error
     });
   } else if ($(".form-control").val() === "workouts") {
-    // let workout = $("input[name='search']").val();
+    let muscle = $("#muscle-selection").val();
+    console.log("invoked");
     $.ajax({
       type: "GET",
-      url: "/api/workout/find",
+      url: "/api/workout/find/" + muscle,
       success: renderWorkoutSuccess,
       error: error
     });
   }
 });
 
-const test = () => {
-  let limit = $("input[name='search']").val();
-  console.log("invoked");
-  $.ajax({
-    type: "GET",
-    url: "/api/workout/find/" + limit,
-    success: response => {
-      console.log(response);
-      $("#search-results").append(`<p>${response.results[0].id}</p>
-      <p>${response.results[0].description}</p>`);
-    },
-    error: error
-  });
-};
+const test = () => {};
 
 // const saveWorkout = () => {
 //     let
