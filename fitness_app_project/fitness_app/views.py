@@ -6,10 +6,9 @@ from django.shortcuts import render, redirect
 from .forms import LoginForm, SignupForm
 from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 import requests
 import json
-from django.http.response import JsonResponse
 from django.contrib.auth.models import User
 from pprint import pprint
 
@@ -109,7 +108,7 @@ def find_workout(request, limit):
 # POST
 
 def save_workout(request):
-    
+    print("placeholder")
 
 ################ FOOD API ############
 
