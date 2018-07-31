@@ -82,28 +82,10 @@ const test = () => {
   });
 };
 
-<<<<<<< HEAD
-// const saveWorkout = () => {
-//     let
-//     $.ajax({
-//         method: "POST",
-//         url: `api/workout//save`
-//     })
-// }
-||||||| merged common ancestors
 const saveWorkout = () => {
-    let 
     $.ajax({
         method: "POST",
-        url: `api/workout//save`
-    })
-}
-=======
-const saveWorkout = () => {
-    let
-    $.ajax({
-        method: "POST",
-        url: `api/workout//save`
-    })
-}
->>>>>>> 237cbac4afe6f2a42024b0b3dcdc40948bf022af
+        url: `api/workout//save`,
+        // success:
+    });
+  }
