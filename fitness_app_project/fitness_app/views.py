@@ -99,7 +99,7 @@ def dashboard(request, username):
 # GET
 
 def find_workout(request):
-    url = 'https://wger.de/api/v2/exercise/?limit=3'
+    url = 'https://wger.de/api/v2/exercise/'
     r = requests.get(url=url)
     r
     r.content
