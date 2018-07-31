@@ -45,7 +45,7 @@ const renderWorkoutSuccess = response => {
 
 // ####################################### AJAX CALLS ############################################
 
-$("input[type='submit']").on("click", function(e) {
+$("#find-button").on("click", function(e) {
   e.preventDefault();
   if ($(".form-control").val() === "food") {
     // let food = $("input[name='search']").val();
