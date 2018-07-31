@@ -100,11 +100,26 @@ def dashboard(request, username):
 def find_food(request):
     r = requests.get(
         "https://api.edamam.com/api/food-database/parser?ingr=steak&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401")
-    return JsonResponse({'success':False, 'errorMsg':errorMsg}
+    return JsonResponse({'success': False, 'errorMsg': errorMsg}
     # return r.json()
 
 
 
 def find_workout(request):
-    r = requests.get("https://wger.de/api/v2/exercise/", params={})
+    r=requests.get("https://wger.de/api/v2/exercise/", params={})
     return r.content
+
+
+        # In the python console
+        # >> > import requests
+        # >> > import json
+        # >> > from pprint import pprint
+        # >> >
+        # >> > url='https://wger.de/api/v2/....'
+        # >> > data='{"key": "value"}'
+        # >> > headers={'Accept': 'application/json',
+        #               'Authorization': 'Token 12345...'}
+        # >> > r=requests.patch(url=url, data=data, headers=headers)
+        # >> > r
+        # >> > r.content
+        # >> > pprint(json.loads(r.content))
