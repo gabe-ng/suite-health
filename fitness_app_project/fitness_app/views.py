@@ -1,9 +1,9 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
 # from .models import User
 # from .models import User, Custom_Meals, Custom_Circuit
 # from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, SignupForm
+from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 import requests
@@ -51,24 +51,24 @@ def login_view(request):
 
 
 def signup_view(request):
-    if request.method == "POST":
-        # if post, then authenticate (user submitted username and password)
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            u = form.cleaned_data["username"]
-            p = form.cleaned_data["password"]
-            user = authenticate(username=u, password=p)
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return HttpResponseRedirect("/index")
-                else:
-                    print("The account has been disabled.")
-            else:
-                print("The username and/or password is incorrect.")
+# POST Request for a new user
+  if request.method == 'POST':
+    # Verify passwords
+    if request.POST['password'] == request.POST['confirm_password']:
+      try:
+        # If Username already exists, render form with error
+        user = User.objects.get(username=request.POST['username'])
+        return render(request, 'fitness_app/signup.html', {'error': 'Username already in use'})
+      # If user does not exist, create and login new user then redirect to home
+      except User.DoesNotExist:
+        user = User.objects.create_user(request.POST['username'], password=request.POST['password'])
+        auth.login(request, user)
+        return redirect('/index')
     else:
-        form = SignupForm()
-        return render(request, 'fitness_app/signup.html', {'form': form})
+      return render(request, 'fitness_app/signup.html', {'error': 'Passwords do not match'})
+  # GET request for empty sign up form
+  else:
+    return render(request, 'fitness_app/signup.html')
 
 
 def logout_view(request):
