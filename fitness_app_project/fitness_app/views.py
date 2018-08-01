@@ -25,10 +25,32 @@ def profile(request, username):
 ## create ##
 
 def circuitForm(request):
-    return render(request, "fitness_app/circuits.html", {})
+    if request.method == "POST":
+        # name = request.POST["name"]
+        # workouts = request.POST["workouts"]
+        user = request.user
+        if user.is_active:
+            circuit = Custom_Circuit.objects.create(user=user, name=request.POST["name"], workouts=request.POST["workouts"])
+            # return HttpResponseRedirect("/homepage")
+            return redirect('dashboard', username = user.username)
+        else:
+            return render(request, 'fitness_app/circuits.html', {'error': "please login"})
+    else:
+        return render(request, "fitness_app/circuits.html")
 
 def mealForm(request):
-    return render(request, "fitness_app/meals.html", {})
+    if request.method == "POST":
+        # name = request.POST["name"]
+        # workouts = request.POST["workouts"]
+        user = request.user
+        if user.is_active:
+            meal = Custom_Meal.objects.create(user=user, label=request.POST["label"], ingredients=request.POST["ingredients"], instructions=request.POST["instructions"], portions=request.POST["portions"], macros=request.POST["macros"])
+            # return HttpResponseRedirect("/homepage")
+            return redirect('dashboard', username = user.username)
+        else:
+            return render(request, 'fitness_app/meals.html', {'error': "please login"})
+    else:
+        return render(request, "fitness_app/meals.html")
 
 
 ############## LOG IN ############
@@ -105,7 +127,9 @@ def custom_circuits(request):
 
 
 def dashboard(request, username):
-    return render(request, 'fitness_app/dashboard.html')
+    circuits = Custom_Circuit.objects.filter(user=request.user)
+    meals = Custom_Meal.objects.filter(user=request.user)
+    return render(request, 'fitness_app/dashboard.html', {'circuits':circuits, 'meals':meals})
 
 
 ################ WORKOUT API ############

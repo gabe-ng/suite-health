@@ -14,9 +14,19 @@
   <div class="healthWrapper">
     <div class="savedFood">
       <h3>Saved Food</h3>
+      <div>
+        {% for circuit in circuits %}
+        {{ circuit.name }}
+        {% endfor %}
+      </div>
     </div>
     <div class="savedWorkout">
       <h3>Saved Workout</h3>
+      <div>
+        {% for meal in meals %}
+        {{ meal.label }}
+        {% endfor %}
+      </div>
     </div>
   </div>
 
