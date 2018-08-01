@@ -100,13 +100,25 @@ const renderCustomMeals = response => {
   console.log(meals);
   for (let i = 0; i < meals.length; i++) {
     let meal = meals[i];
-    html = `<div id="${meal.pk}</div>
+    $("#meal-feed").append(`<div id="${meal.pk}</div>
                   <h6>Name: ${meal.fields.label}</h6>
                   <p>Ingredients: ${meal.fields.ingredients}</p>
                   <p>Instructions: ${meal.fields.instructions}</p>
                   <p>Portions: ${meal.fields.portions}</p>
-                  <p>Macros: ${meal.fields.macros}</p>`;
-    $("#meal-feed").append(html);
+                  <p>Macros: ${meal.fields.macros}</p>
+                    </div>`);
+  }
+};
+
+const renderCustomCircuits = response => {
+  let circuits = JSON.parse(response.circuits);
+  console.log(circuits);
+  for (let i = 0; i < circuits.length; i++) {
+    let circuit = circuits[i];
+    $("#meal-feed").append(`<div id="${circuit.pk}</div>
+                  <h6>Name: ${circuit.fields.label}</h6>
+                  <p>Workouts: ${circuit.fields.workouts}</p>
+                    </div>`);
   }
 };
 
@@ -116,6 +128,16 @@ const hello = () => {
     method: "GET",
     url: "/api/custommeals/",
     success: renderCustomMeals,
+    error: error
+  });
+};
+
+const hello2 = () => {
+  console.log("test");
+  $.ajax({
+    method: "GET",
+    url: "/api/customcircuits/",
+    success: renderCustomCircuits,
     error: error
   });
 };
