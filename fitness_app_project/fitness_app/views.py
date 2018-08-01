@@ -14,7 +14,8 @@ from django.core import serializers
 def landing(request):
     return render(request, "fitness_app/landing.html", {})
 
-
+def about(request):
+    return render(request, "fitness_app/about.html", {})
 
 
 def profile(request, username):
