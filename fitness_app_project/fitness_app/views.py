@@ -52,7 +52,6 @@ def login_view(request):
     else:
         return render(request, "fitness_app/login.html")
 
-
 def signup_view(request):
     # POST Request for a new user
     if request.method == 'POST':
@@ -84,7 +83,6 @@ def logout_view(request):
 
 # homepage
 
-
 def homepage(request):
     return render(request, "fitness_app/homepage.html")
 
@@ -103,10 +101,8 @@ def custom_circuits(request):
 
 # profile
 
-
 def dashboard(request, username):
     return render(request, 'fitness_app/dashboard.html')
-
 
 ################ WORKOUT API ############
 
