@@ -70,7 +70,7 @@ $("#find-button").on("click", function(e) {
     let food = foodInput.replace(/" "/g, "%20");
     console.log(food);
     $.ajax({
-      type: "GET",
+      method: "GET",
       url: "/api/food/find/" + food,
       success: renderFoodSuccess,
       error: error
@@ -79,7 +79,7 @@ $("#find-button").on("click", function(e) {
     let muscle = $("#muscle-selection").val();
     console.log("invoked");
     $.ajax({
-      type: "GET",
+      method: "GET",
       url: "/api/workout/find/" + muscle,
       success: renderWorkoutSuccess,
       error: error
@@ -87,17 +87,24 @@ $("#find-button").on("click", function(e) {
   }
 });
 
-const test = () => {
-  let limit = $("input[name='search']").val();
-  console.log("invoked");
+// const saveWorkout = () => {
+//     let
+//     $.ajax({
+//         method: "POST",
+//         url: `api/workout//save`
+//     })
+// }
+
+const renderCustomMeals = response => {
+  console.log(response);
+};
+
+const hello = () => {
+  console.log("test");
   $.ajax({
-    type: "GET",
-    url: "/api/workout/find/" + limit,
-    success: response => {
-      console.log(response);
-      $("#search-results").append(`<p>${response.results[0].id}</p>
-      <p>${response.results[0].description}</p>`);
-    },
+    method: "GET",
+    url: "/api/custommeals/",
+    success: renderCustomMeals,
     error: error
   });
 };
