@@ -13,7 +13,7 @@ let muscles = {
   12: "Lats",
   13: "Bicep Short Head",
   14: "Obliques",
-  15: "Calves"
+  15: "Calves",
 };
 
 // muscle endpoint
@@ -61,13 +61,16 @@ const renderWorkoutSuccess = response => {
   });
 };
 
+
+
 // ####################################### AJAX CALLS ############################################
 
 $("#find-button").on("click", function(e) {
   e.preventDefault();
   if ($("#search-type").val() === "food") {
     let foodInput = $("#food-selection").val();
-    let food = foodInput.replace(/" "/g, "%20");
+    console.log(foodInput);
+    let food = encodeURIComponent(foodInput);
     console.log(food);
     $.ajax({
       method: "GET",
