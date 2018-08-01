@@ -9,13 +9,19 @@
 </head>
 
 <body>
-  <div>
-    <div id="mainbox">
-      <h1>fitness app</h1>
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <div id="titleBox">
+          <h1>fitness app</h1>
+        </div>
+        <div id="buttons">
+        <a href="{% url 'login' %}">login or signup</a>
+        <a href="{% url 'homepage' %}">continue as guest</a>
+      </div>
     </div>
-    <a href="{% url 'login' %}">login</a>
-    <a href="{% url 'homepage' %}">continue as guest</a>
   </div>
+</div>
 </body>
 
 </html>
