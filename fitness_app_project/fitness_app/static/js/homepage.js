@@ -30,7 +30,7 @@ const renderFoodSuccess = response => {
   response.hints.forEach(food => {
     $("#search-results").append(`
         <div>
-            <h6>Name: ${food.food.label}</h6>
+            <h1>Name: ${food.food.label}</h1>
             <ul id="${food.food.id}"></ul>
         </div>
     `);
@@ -49,7 +49,7 @@ const renderWorkoutSuccess = response => {
     console.log(workout.id);
     $("#search-results").append(`
           <div id="${workout.id} class="rendered-workouts">
-            <h6>Author: ${workout.license_author}</h6>
+            <h1>Author: ${workout.license_author}</h1>
             <p>Name: ${workout.name}</p>
             <p>Description: ${workout.description}</p>
             <ul id="muscle-group-${workout.id}"></ul>
