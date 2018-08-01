@@ -115,7 +115,7 @@ const renderCustomCircuits = response => {
   console.log(circuits);
   for (let i = 0; i < circuits.length; i++) {
     let circuit = circuits[i];
-    $("#meal-feed").append(`<div id="${circuit.pk}</div>
+    $("#circuit-feed").append(`<div id="${circuit.pk}</div>
                   <h6>Name: ${circuit.fields.label}</h6>
                   <p>Workouts: ${circuit.fields.workouts}</p>
                     </div>`);
