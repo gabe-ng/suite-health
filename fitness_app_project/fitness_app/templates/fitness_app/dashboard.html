@@ -6,8 +6,12 @@
       <h2>User Info</h2>
     </div>
     <div class="createBtns">
-      <button id="createCircuit" type="button" class="create" data-toggle="modal" data-target=".bd-example-modal-lg">Create Circuit</button>
-      <button id="createMeal" type="button" class="create" data-toggle="modal" data-target=".bd-example-modal-lg">Create Meal</button>
+      <form action="{% url 'circuits' %}">
+        <button id="createCircuit" type="button" class="create">Create Circuit</button>
+      </form>
+      <form action="{% url 'meals' %}">
+        <button id="createMeal" type="button" class="create">Create Meal</button>
+      </form>
     </div>
   </div>
 
@@ -17,26 +21,6 @@
     </div>
     <div class="savedWorkout">
       <h3>Saved Workout</h3>
-    </div>
-  </div>
-
-  <div id="idModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <form class="mealCreate">{% csrf_token %}
-          <input type="text" name="label" placeholder="Name/ Label"></input>
-          <input type="text" name="ingredients" placeholder="Ingredients"></input>
-          <input type="text" name="instructions" placeholder="Cooking/ Prep Instructions"></input>
-          <input type="text" name="portions" placeholder="Portion Sizes"></input>
-          <input type="text" name="macros" placeholder="Nutrients"></input>
-          <input class="saveForm" type="submit" value="Submit">Create Meal</input>
-        </form>
-        <form class="circuitCreate">{% csrf_token %}
-          <input type="text" name="circuitName" placeholder="Name"></input>
-          <input type="text" name="description" placeholder="Description"></input>
-          <input class="saveForm" type="submit" value="Submit">Create Circuit</input>
-        </form>
-      </div>
     </div>
   </div>
 
