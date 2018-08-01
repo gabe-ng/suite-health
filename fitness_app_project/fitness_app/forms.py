@@ -16,5 +16,15 @@ class SignupForm(forms.Form):
 
 
 # class CreateCircuitForm(forms.form):
+#     name = models.CharField(max_length=50)
+#     workouts = models.TextField()
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='circuits')
+
 
 # class CreateMealForm(forms.form):
+#     label = models.CharField(max_length=100)
+#     ingredients = models.TextField()
+#     instructions = models.TextField()
+#     portions = models.TextField()
+#     macros = models.TextField()
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='meals')
