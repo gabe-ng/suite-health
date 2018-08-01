@@ -6,7 +6,7 @@
     <p>{{error}}</p>
   </div>
   {% endif %}
-  <form id="signupForm" method="POST" action="{% url 'signup' %}">
+  <form id="forms" method="POST" action="{% url 'signup' %}">
     {% csrf_token %}
     <input type="text" name="username" placeholder="username" required>
     <input type="password" name="password" placeholder="password" required>

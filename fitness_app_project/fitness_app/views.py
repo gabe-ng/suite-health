@@ -14,12 +14,21 @@ from django.core import serializers
 def landing(request):
     return render(request, "fitness_app/landing.html", {})
 
-
+def about(request):
+    return render(request, "fitness_app/about.html", {})
 
 
 def profile(request, username):
     user = User.objects.get(username=username)
     return render(request, "fitness_app/profile.html", {"username": username})
+
+## create ##
+
+def circuitForm(request):
+    return render(request, "fitness_app/circuits.html", {})
+
+def mealForm(request):
+    return render(request, "fitness_app/meals.html", {})
 
 
 ############## LOG IN ############

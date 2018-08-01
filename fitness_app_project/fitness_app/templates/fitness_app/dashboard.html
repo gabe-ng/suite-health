@@ -6,12 +6,8 @@
       <h2>User Info</h2>
     </div>
     <div class="createBtns">
-      <form action="{% url 'circuits' %}">
-        <button id="createCircuit" type="button" class="create">Create Circuit</button>
-      </form>
-      <form action="{% url 'meals' %}">
-        <button id="createMeal" type="button" class="create">Create Meal</button>
-      </form>
+      <button id="createCircuit"><a href="{% url 'circuits' %}">create circuit</a></button>
+      <button id="createMeal"><a href="{% url 'meals' %}">create meal</a></button>
     </div>
   </div>
 
