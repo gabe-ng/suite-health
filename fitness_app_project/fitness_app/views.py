@@ -16,8 +16,6 @@ def landing(request):
     return render(request, "fitness_app/landing.html", {})
 
 
-def index(request):
-    return render(request, "fitness_app/index.html", {})
 
 
 def profile(request, username):
@@ -39,7 +37,7 @@ def login_view(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponseRedirect("/index")
+                    return HttpResponseRedirect("/homepage")
                 else:
                     print("The account has been disabled.")
             else:
@@ -63,7 +61,7 @@ def signup_view(request):
                 user = User.objects.create_user(
                     request.POST['username'], password=request.POST['password'])
                 auth.login(request, user)
-                return redirect('/index')
+                return redirect('/homepage')
         else:
             return render(request, 'fitness_app/signup.html', {'error': 'Passwords do not match'})
     # GET request for empty sign up form
@@ -73,7 +71,7 @@ def signup_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect("/index")
+    return HttpResponseRedirect("/homepage")
 
 
 ############# HOMEPAGE ###########
@@ -83,6 +81,15 @@ def logout_view(request):
 
 def homepage(request):
     return render(request, "fitness_app/homepage.html")
+
+def custom_meals(request):
+    meals = Custom_Meal.objects.all()
+    return JsonResponse(meals, safe=False)
+    print("placeholder")
+
+def custom_circuits(request):
+    circuits = Custom_Circuit.objects.all()
+    print("placeholder")
 
 
 ############# PROFILE ###########

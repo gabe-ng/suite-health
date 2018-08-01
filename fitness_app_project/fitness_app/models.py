@@ -14,6 +14,7 @@ class Profile(models.Model):
 
 
 class Custom_Meal(models.Model):
+    label = models.CharField(max_length=100)
     ingredients = models.TextField()
     instructions = models.TextField()
     portions = models.TextField()
@@ -21,9 +22,10 @@ class Custom_Meal(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='meals')
 
     def __str__(self):
-        return self.name
+        return self.label
 
 class Custom_Circuit(models.Model):
+    name = models.CharField(max_length=50)
     workouts = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='circuits')
 
@@ -42,4 +44,4 @@ class Food(models.Model):
     carbs = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.label
