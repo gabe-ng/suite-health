@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-# from .models import User
 from .models import Custom_Meal, Custom_Circuit
 # from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, SignupForm
@@ -39,9 +38,9 @@ def login_view(request):
                     login(request, user)
                     return HttpResponseRedirect("/homepage")
                 else:
-                    print("The account has been disabled.")
+                    return render(request, 'fitness_app/login.html', {'error': "The account has been disabled."})
             else:
-                print("The username and/or password is incorrect.")
+                return render(request, 'fitness_app/login.html', {'error': "The username and/or password is incorrect."})
     else:
         form = LoginForm()
         return render(request, "fitness_app/login.html", {"form": form})
@@ -51,7 +50,7 @@ def signup_view(request):
     # POST Request for a new user
     if request.method == 'POST':
         # Verify passwords
-        if request.POST['password'] == request.POST['confirm_password']:
+        if request.POST['password'] == request.POST['confirm_password'] and request.POST['password'] != "":
             try:
                 # If Username already exists, render form with error
                 user = User.objects.get(username=request.POST['username'])
