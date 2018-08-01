@@ -30,7 +30,7 @@ const renderFoodSuccess = response => {
   response.hints.forEach(food => {
     $("#search-results").append(`
         <div>
-            <h6>Name: ${food.food.label}</h6>
+            <h1>Name: ${food.food.label}</h1>
             <ul id="${food.food.id}"></ul>
         </div>
     `);
@@ -49,7 +49,7 @@ const renderWorkoutSuccess = response => {
     console.log(workout.id);
     $("#search-results").append(`
           <div id="${workout.id} class="rendered-workouts">
-            <h6>Author: ${workout.license_author}</h6>
+            <h1>Author: ${workout.license_author}</h1>
             <p>Name: ${workout.name}</p>
             <p>Description: ${workout.description}</p>
             <ul id="muscle-group-${workout.id}"></ul>
@@ -96,7 +96,30 @@ $("#find-button").on("click", function(e) {
 // }
 
 const renderCustomMeals = response => {
-  console.log(response);
+  let meals = JSON.parse(response.meals);
+  console.log(meals);
+  for (let i = 0; i < meals.length; i++) {
+    let meal = meals[i];
+    $("#meal-feed").append(`<div id="${meal.pk}</div>
+                  <h6>Name: ${meal.fields.label}</h6>
+                  <p>Ingredients: ${meal.fields.ingredients}</p>
+                  <p>Instructions: ${meal.fields.instructions}</p>
+                  <p>Portions: ${meal.fields.portions}</p>
+                  <p>Macros: ${meal.fields.macros}</p>
+                    </div>`);
+  }
+};
+
+const renderCustomCircuits = response => {
+  let circuits = JSON.parse(response.circuits);
+  console.log(circuits);
+  for (let i = 0; i < circuits.length; i++) {
+    let circuit = circuits[i];
+    $("#circuit-feed").append(`<div id="${circuit.pk}</div>
+                  <h6>Name: ${circuit.fields.label}</h6>
+                  <p>Workouts: ${circuit.fields.workouts}</p>
+                    </div>`);
+  }
 };
 
 const hello = () => {
@@ -105,6 +128,16 @@ const hello = () => {
     method: "GET",
     url: "/api/custommeals/",
     success: renderCustomMeals,
+    error: error
+  });
+};
+
+const hello2 = () => {
+  console.log("test");
+  $.ajax({
+    method: "GET",
+    url: "/api/customcircuits/",
+    success: renderCustomCircuits,
     error: error
   });
 };

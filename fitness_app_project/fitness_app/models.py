@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+# from .serializers import FoodSerializer, WorkoutSerializer, ProfileSerializer, Custom_Meal_Serializer, Custom_Workout_Serializer
 
 
 class Profile(models.Model):

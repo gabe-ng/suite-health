@@ -13,7 +13,9 @@ body {
 }
 
 h1 {
-  margin: 0 0 9px 10px;
+  margin: 0;
+  padding: .5em;
+  color: #70B2A3;
 }
 
 nav {
@@ -27,6 +29,7 @@ a {
 }
 
 p {
+  padding: .5em;
   margin: 0;
 }
 input {
@@ -43,8 +46,38 @@ footer {
   margin: 8px 10px 0;
 }
 
-.contentWrapper {
-  height: 90%;
+.outer {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+#login {
+  text-align: center;
+  padding: 5em;
+}
+
+#signup {
+  text-align: center;
+  padding: 5em;
+}
+
+#signupForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 /*
@@ -108,13 +141,13 @@ Homepage
 }
 
 .circuit-feed {
-  background-color: yellow;
+  background-color: white;
   height: 100%;
   width: 100%;
 }
 
 .meal-feed {
-  background-color: green;
+  background-color: lightgrey;
   height: 100%;
   width: 100%;
 }
@@ -127,7 +160,6 @@ Homepage
 }
 
 .homepage-search {
-  background-color: pink;
   margin: 0;
 }
 
@@ -138,10 +170,7 @@ Homepage
 }
 
 .search-results {
-  background-color: red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #FFF2EC;
   height: 100%;
   width: 100%;
 }
