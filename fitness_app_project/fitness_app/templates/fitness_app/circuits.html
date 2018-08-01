@@ -1,0 +1,11 @@
+{% extends 'fitness_app/base.html' %} {% load staticfiles %} {% block content %}
+<div id="circuit">
+  <h1>Create a Circuit</h1>
+    <form id="forms" method="POST" action="{% url 'circuits' %}">
+      {% csrf_token %}
+      <input type="text" name="name" placeholder="name" required>
+      <input type="text" name="workouts" placeholder="workouts" required>
+      <input type="submit" value="Submit" />
+  </form>
+</div>
+{% endblock %}

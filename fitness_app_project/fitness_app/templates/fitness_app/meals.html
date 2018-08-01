@@ -1,0 +1,14 @@
+{% extends 'fitness_app/base.html' %} {% load staticfiles %} {% block content %}
+<div id="meal">
+  <h1>Create a Meal</h1>
+    <form id="forms" method="POST" action="{% url 'meals' %}">
+      {% csrf_token %}
+      <input type="text" name="label" placeholder="label" required>
+      <input type="text" name="ingredients" placeholder="ingredients" required>
+      <input type="text" name="instructions" placeholder="instructions" required>
+      <input type="text" name="portions" placeholder="portions" required>
+      <input type="text" name="macros" placeholder="macros" required>
+      <input type="submit" value="Submit" />
+  </form>
+</div>
+{% endblock %}

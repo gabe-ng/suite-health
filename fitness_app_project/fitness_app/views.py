@@ -22,6 +22,14 @@ def profile(request, username):
     user = User.objects.get(username=username)
     return render(request, "fitness_app/profile.html", {"username": username})
 
+## create ##
+
+def circuitForm(request):
+    return render(request, "fitness_app/circuits.html", {})
+
+def mealForm(request):
+    return render(request, "fitness_app/meals.html", {})
+
 
 ############## LOG IN ############
 
