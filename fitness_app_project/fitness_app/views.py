@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect
 from .models import Custom_Meal, Custom_Circuit
 # from django.contrib.auth.decorators import login_required
-from .forms import LoginForm, SignupForm
+# from .forms import LoginForm, SignupForm
 from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 import requests
 import json
 from django.contrib.auth.models import User
-from pprint import pprint
+from django.core import serializers
 
 
 def landing(request):
@@ -28,10 +28,9 @@ def profile(request, username):
 def login_view(request):
     if request.method == "POST":
         # if post, then authenticate (user submitted username and password)
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            u = form.cleaned_data["username"]
-            p = form.cleaned_data["password"]
+        if request.POST['username'] != "" and request.POST['password'] != "":
+            u = request.POST["username"]
+            p = request.POST["password"]
             user = authenticate(username=u, password=p)
             if user is not None:
                 if user.is_active:
@@ -42,8 +41,7 @@ def login_view(request):
             else:
                 return render(request, 'fitness_app/login.html', {'error': "The username and/or password is incorrect."})
     else:
-        form = LoginForm()
-        return render(request, "fitness_app/login.html", {"form": form})
+        return render(request, "fitness_app/login.html")
 
 
 def signup_view(request):
@@ -83,11 +81,13 @@ def homepage(request):
 
 def custom_meals(request):
     meals = Custom_Meal.objects.all()
-    return HttpResponse(meals, content_type='application/json')
+    data = serializers.serialize('json', meals)
+    return JsonResponse({ 'meals': data })
 
 def custom_circuits(request):
     circuits = Custom_Circuit.objects.all()
-    return HttpResponse(circuits, content_type='application/json')
+    data = serializers.serialize('json', circuits)
+    return JsonResponse({ 'circuits': data })
 
 
 ############# PROFILE ###########
