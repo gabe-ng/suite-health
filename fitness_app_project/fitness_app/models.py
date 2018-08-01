@@ -31,8 +31,6 @@ class Custom_Circuit(models.Model):
 
     def __str__(self):
         return self.name
-# class Workout(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='workouts')
 
 
 class Food(models.Model):
@@ -45,3 +43,17 @@ class Food(models.Model):
 
     def __str__(self):
         return self.label
+
+class Workout(models.Model):
+    # 'license_author' - who made the post
+    author = models.CharField(max_length=100)
+    # 'name' - name of exercise
+    name = models.CharField(max_length=100)
+    # 'description'
+    description = models.TextField()
+    # 'muscles'
+    muscles = models.TextField()
+
+    def __str__(self):
+        return self.name
+

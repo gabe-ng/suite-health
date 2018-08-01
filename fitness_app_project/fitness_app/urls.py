@@ -9,8 +9,6 @@ urlpatterns = [
     path('logout/', views.logout_view, name="logout"),
     ############# HOMEPAGE ##############
     path('homepage/', views.homepage, name="homepage"),
-    path('homepage/custommeals/', views.custom_meals, name="custommeals"),
-    path('homepage/customcircuits/', views.custom_circuits, name="customcircuit"),
     ############# PROFILE ###############
     path('user/<username>/', views.dashboard, name='dashboard'),
     ############# FOOD API #################
@@ -18,4 +16,7 @@ urlpatterns = [
     ############# WORKOUT API #################
     path('api/workout/find/<slug:muscle>', views.find_workout, name='find_workout'),
     path('api/workout/<int:pk>/save', views.save_workout, name='save_workout'),
+    ############ CUSTOM MEALS AND CIRCUITS API ###################
+    path('api/custommeals/', views.custom_meals, name="custommeals"),
+    path('api/customcircuits/', views.custom_circuits, name="customcircuit"),
 ]

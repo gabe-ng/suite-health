@@ -10,14 +10,16 @@
 
 <body>
   <nav>
-  <h1><a href="{% url 'homepage' %}">Fitness App</a></h1>
-  {% if user.is_authenticated %}
-    <a class = "aHeader" href="{% url 'dashboard' username=user.username %}">Hello, {{ user.username }}!</a> |
-    <a class = "aHeader" href="{% url 'logout' %}">Logout</a>
-  {% else %}
-    <a class = "aHeader" href="{% url 'login' %}">Login</a> |
-    <a class = "aHeader" href="{% url 'signup' %}">Signup</a>
-  {% endif %}
+    <h1>
+      <a href="{% url 'homepage' %}">Fitness App</a>
+    </h1>
+    {% if user.is_authenticated %}
+    <a class="aHeader" href="{% url 'dashboard' username=user.username %}">Hello, {{ user.username }}!</a> |
+    <a class="aHeader" href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a class="aHeader" href="{% url 'login' %}">Login</a> |
+    <a class="aHeader" href="{% url 'signup' %}">Signup</a>
+    {% endif %}
   </nav>
 
   <div class="contentWrapper">

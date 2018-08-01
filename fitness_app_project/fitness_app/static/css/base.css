@@ -7,23 +7,23 @@ body {
   font-family: "Nunito", sans-serif;
   font-size: 16px;
   margin: 0;
-  background-color: #ffffff;
-  color: #79b279;
-  height: 98vh;
+  background-color: #FFF2EC;
+  color: #70B2AD;
 }
 
 h1 {
   margin: 0 0 9px 10px;
+  color: #70B2A3;
 }
 
 nav {
-  background-color: lightgrey;
+  background-color: #FFDED2;
   padding-bottom: 5px;
 }
 
 a {
   text-decoration: none;
-  color: #b2678c;
+  color: #70B2A3;
 }
 
 p {
@@ -35,6 +35,9 @@ input {
 }
 
 footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   text-align: center;
   background-color: lightgrey;
 }
@@ -43,9 +46,39 @@ footer {
   margin: 8px 10px 0;
 }
 
-.contentWrapper {
-  height: 90%;
+.outer {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+#login {
+  text-align: center;
+  padding: 5em;
+}
+
+#signup {
+  padding: 5em;
+}
+
+#signupForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 
 /*
 Dashboard

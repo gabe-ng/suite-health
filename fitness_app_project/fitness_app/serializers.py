@@ -1,30 +1,44 @@
 from rest_framework import serializers
-from .models import User, Profile, Custom_Meal, Custom_Circuit, Food
+from .models import Profile, Custom_Meal, Custom_Circuit, Food, Workout
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class ProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = User
-        fields = ()
+        model = Profile
+        fields = ('id','name','age','weight','height')
         depth = 1
-
 
 class Custom_Meal_Serializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Custom_Meal
-        fields = ()
+        fields = ('id','ingredients','instructions','portions','macros','user')
         depth = 1
-
 
 class Custom_Circuit_Serializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Custom_Circuit
-        fields = ()
+        fields = ('id','workouts','user')
         depth = 1
 
 
 class FoodSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Food
-        fields = ()
+        fields = ('id','user','label','kcal','protein','fat','carbs')
         depth = 1
+
+      def create(self, validated_data):
+            food = Food.objects.create(
+            Food = validated_data.get('food')
+        )
+
+class WorkoutSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Workout
+        fields = ('id','author','name','description','muscles')
+        depth = 1  
+
+      def create(self, validated_data):
+            workout = Workout.objects.create(
+            Workout = validated_data.get('workout')
+        )      
