@@ -133,7 +133,7 @@ const renderCustomMeals = response => {
   console.log(meals);
   for (let i = 0; i < meals.length; i++) {
     let meal = meals[i];
-    $("#meal-feed").append(`<div id="${meal.pk}</div>
+    $("#meal-feed").append(`<div id="${meal.pk}">
                   <h6>Name: ${meal.fields.label}</h6>
                   <p>Ingredients: ${meal.fields.ingredients}</p>
                   <p>Instructions: ${meal.fields.instructions}</p>
@@ -148,29 +148,24 @@ const renderCustomCircuits = response => {
   console.log(circuits);
   for (let i = 0; i < circuits.length; i++) {
     let circuit = circuits[i];
-    $("#circuit-feed").append(`<div id="${circuit.pk}</div>
-                  <h6>Name: ${circuit.fields.label}</h6>
+    $("#circuit-feed").append(`<div id="${circuit.pk}">
+                  <h6>Name: ${circuit.fields.name}</h6>
                   <p>Workouts: ${circuit.fields.workouts}</p>
                     </div>`);
   }
 };
 
-const hello = () => {
-  console.log("test");
-  $.ajax({
-    method: "GET",
-    url: "/api/custommeals/",
-    success: renderCustomMeals,
-    error: error
-  });
-};
+$.ajax({
+  method: "GET",
+  url: "/api/custommeals/",
+  success: renderCustomMeals,
+  error: error
+});
 
-const hello2 = () => {
-  console.log("test");
-  $.ajax({
-    method: "GET",
-    url: "/api/customcircuits/",
-    success: renderCustomCircuits,
-    error: error
-  });
-};
+
+$.ajax({
+  method: "GET",
+  url: "/api/customcircuits/",
+  success: renderCustomCircuits,
+  error: error
+});

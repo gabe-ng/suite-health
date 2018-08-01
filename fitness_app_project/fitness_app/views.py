@@ -14,10 +14,46 @@ from django.core import serializers
 def landing(request):
     return render(request, "fitness_app/landing.html", {})
 
+<<<<<<< HEAD
+=======
+def about(request):
+    return render(request, "fitness_app/about.html", {})
+
+>>>>>>> upstream/master
 
 def profile(request, username):
     user = User.objects.get(username=username)
     return render(request, "fitness_app/profile.html", {"username": username})
+
+## create ##
+
+def circuitForm(request):
+    if request.method == "POST":
+        # name = request.POST["name"]
+        # workouts = request.POST["workouts"]
+        user = request.user
+        if user.is_active:
+            circuit = Custom_Circuit.objects.create(user=user, name=request.POST["name"], workouts=request.POST["workouts"])
+            # return HttpResponseRedirect("/homepage")
+            return redirect('dashboard', username = user.username)
+        else:
+            return render(request, 'fitness_app/circuits.html', {'error': "please login"})
+    else:
+        return render(request, "fitness_app/circuits.html")
+
+def mealForm(request):
+    if request.method == "POST":
+        # name = request.POST["name"]
+        # workouts = request.POST["workouts"]
+        user = request.user
+        if user.is_active:
+            meal = Custom_Meal.objects.create(user=user, label=request.POST["label"], ingredients=request.POST["ingredients"], instructions=request.POST["instructions"], portions=request.POST["portions"], macros=request.POST["macros"])
+            # return HttpResponseRedirect("/homepage")
+            return redirect('dashboard', username = user.username)
+        else:
+            return render(request, 'fitness_app/meals.html', {'error': "please login"})
+    else:
+        return render(request, "fitness_app/meals.html")
 
 
 ############## LOG IN ############
@@ -40,7 +76,6 @@ def login_view(request):
                 return render(request, 'fitness_app/login.html', {'error': "The username and/or password is incorrect."})
     else:
         return render(request, "fitness_app/login.html")
-
 
 def signup_view(request):
     # POST Request for a new user
@@ -73,7 +108,6 @@ def logout_view(request):
 
 # homepage
 
-
 def homepage(request):
     return render(request, "fitness_app/homepage.html")
 
@@ -92,10 +126,10 @@ def custom_circuits(request):
 
 # profile
 
-
 def dashboard(request, username):
-    return render(request, 'fitness_app/dashboard.html')
-
+    circuits = Custom_Circuit.objects.filter(user=request.user)
+    meals = Custom_Meal.objects.filter(user=request.user)
+    return render(request, 'fitness_app/dashboard.html', {'circuits':circuits, 'meals':meals})
 
 ################ WORKOUT API ############
 

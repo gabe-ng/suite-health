@@ -41,7 +41,7 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
-  background-color: lightgrey;
+  background-color: #FFDED2;
 }
 
 .aHeader {
@@ -76,7 +76,17 @@ footer {
   padding: 5em;
 }
 
-#signupForm {
+#circuit {
+  text-align: center;
+  padding: 5em;
+}
+
+#meal {
+  text-align: center;
+  padding: 5em;
+}
+
+#forms {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -141,6 +151,7 @@ Homepage
   display: flex;
   flex-direction: column;
   width: 25%;
+  height: 85vh;
 }
 
 .circuit-feed {
