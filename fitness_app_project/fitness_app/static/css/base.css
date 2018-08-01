@@ -76,7 +76,17 @@ footer {
   padding: 5em;
 }
 
-#signupForm {
+#circuit {
+  text-align: center;
+  padding: 5em;
+}
+
+#meal {
+  text-align: center;
+  padding: 5em;
+}
+
+#forms {
   display: flex;
   justify-content: center;
   flex-direction: column;
