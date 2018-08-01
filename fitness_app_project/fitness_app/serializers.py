@@ -27,18 +27,9 @@ class FoodSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id','user','label','kcal','protein','fat','carbs')
         depth = 1
 
-      def create(self, validated_data):
-            food = Food.objects.create(
-            Food = validated_data.get('food')
-        )
 
 class WorkoutSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Workout
         fields = ('id','author','name','description','muscles')
-        depth = 1  
-
-      def create(self, validated_data):
-            workout = Workout.objects.create(
-            Workout = validated_data.get('workout')
-        )      
+        depth = 1     
