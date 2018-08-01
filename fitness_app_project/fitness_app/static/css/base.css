@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+/*
+main stuff
+================================================*/
+body {
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  margin: 0;
+  background-color: #FFF2EC;
+  color: #70B2AD;
+}
+
+h1 {
+  margin: 0;
+  padding: .5em;
+  color: #70B2A3;
+}
+
+nav {
+  background-color: #FFDED2;
+  padding-bottom: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #70B2A3;
+}
+
+p {
+  padding: .5em;
+  margin: 0;
+}
+input {
+  padding: 10px;
+  margin-top: 5px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: lightgrey;
+}
+
+.aHeader {
+  margin: 8px 10px 0;
+}
+
+.outer {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+#login {
+  text-align: center;
+  padding: 5em;
+}
+
+#signup {
+  text-align: center;
+  padding: 5em;
+}
+
+#signupForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+/*
+Dashboard
+================================================*/
+.mainWrapper {
+  display: flex;
+  flex-direction: row;
+  border: solid 1px black;
+  height: 100%;
+  width: 100%;
+}
+.infoCreate {
+  width: 40%;
+}
+
+.userInfo {
+  height: 94%;
+  border: solid 1px black;
+  margin: 2% 2% 0 1%;
+  text-align: center;
+}
+
+.mealCreate,
+.circuitCreate {
+  display: none;
+}
+
+.healthWrapper {
+  height: 90%;
+  width: 58%;
+  text-align: center;
+}
+
+.savedFood {
+  height: 49%;
+  margin-top: 2%;
+  margin-bottom: 3%;
+  border: solid 1px black;
+}
+.savedWorkout {
+  height: 49%;
+  margin-bottom: 4%;
+  border: solid 1px black;
+}
+
+/*
+Homepage
+================================================*/
+
+.homepage-content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.feed-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.circuit-feed {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+
+.meal-feed {
+  background-color: lightgrey;
+  height: 100%;
+  width: 100%;
+}
+
+.search-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.homepage-search {
+  margin: 0;
+}
+
+.homepage-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.search-results {
+  background-color: #FFF2EC;
+  height: 100%;
+  width: 100%;
+}
