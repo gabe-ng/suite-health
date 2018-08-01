@@ -122,22 +122,17 @@ const renderCustomCircuits = response => {
   }
 };
 
-const hello = () => {
-  console.log("test");
-  $.ajax({
-    method: "GET",
-    url: "/api/custommeals/",
-    success: renderCustomMeals,
-    error: error
-  });
-};
+$.ajax({
+  method: "GET",
+  url: "/api/custommeals/",
+  success: renderCustomMeals,
+  error: error
+});
 
-const hello2 = () => {
-  console.log("test");
-  $.ajax({
-    method: "GET",
-    url: "/api/customcircuits/",
-    success: renderCustomCircuits,
-    error: error
-  });
-};
+
+$.ajax({
+  method: "GET",
+  url: "/api/customcircuits/",
+  success: renderCustomCircuits,
+  error: error
+});
