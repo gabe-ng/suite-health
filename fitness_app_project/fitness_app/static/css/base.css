@@ -12,7 +12,8 @@ body {
 }
 
 h1 {
-  margin: 0 0 9px 10px;
+  margin: 0;
+  padding: .5em;
   color: #70B2A3;
 }
 
@@ -27,6 +28,7 @@ a {
 }
 
 p {
+  padding: .5em;
   margin: 0;
 }
 input {
@@ -142,13 +144,13 @@ Homepage
 }
 
 .circuit-feed {
-  background-color: yellow;
+  background-color: white;
   height: 100%;
   width: 100%;
 }
 
 .meal-feed {
-  background-color: green;
+  background-color: lightgrey;
   height: 100%;
   width: 100%;
 }
@@ -161,7 +163,6 @@ Homepage
 }
 
 .homepage-search {
-  background-color: pink;
   margin: 0;
 }
 
@@ -172,10 +173,7 @@ Homepage
 }
 
 .search-results {
-  background-color: red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #FFF2EC;
   height: 100%;
   width: 100%;
 }
