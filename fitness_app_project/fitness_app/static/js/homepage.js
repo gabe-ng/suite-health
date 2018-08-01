@@ -96,7 +96,18 @@ $("#find-button").on("click", function(e) {
 // }
 
 const renderCustomMeals = response => {
-  console.log(response);
+  let meals = JSON.parse(response.meals);
+  console.log(meals);
+  for (let i = 0; i < meals.length; i++) {
+    let meal = meals[i];
+    html = `<div id="${meal.pk}</div>
+                  <h6>Name: ${meal.fields.label}</h6>
+                  <p>Ingredients: ${meal.fields.ingredients}</p>
+                  <p>Instructions: ${meal.fields.instructions}</p>
+                  <p>Portions: ${meal.fields.portions}</p>
+                  <p>Macros: ${meal.fields.macros}</p>`;
+    $("#meal-feed").append(html);
+  }
 };
 
 const hello = () => {
