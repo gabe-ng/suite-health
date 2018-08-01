@@ -1,3 +1,5 @@
+let workoutResponse = null;
+
 let muscles = {
   1: "Biceps Long Head",
   2: "Deltiods",
@@ -44,6 +46,7 @@ const renderFoodSuccess = response => {
 };
 
 const renderWorkoutSuccess = response => {
+  workoutResponse = response;
   $("#search-results").empty();
   response.results.forEach(workout => {
     console.log(workout.id);
@@ -58,8 +61,46 @@ const renderWorkoutSuccess = response => {
     workout.muscles.forEach(muscleNum => {
       $(`#muscle-group-${workout.id}`).append(`<li>${muscles[muscleNum]}</li>`);
     });
+    $("#search-results").append(
+      `<input value='Save this workout' type='submit' class='saveWorkout' id=${
+        workout.id
+      } data-id='${workout.id}'>`
+    );
   });
 };
+
+// add click listener that triggers and AJAX call
+// inside AJAX call, set conditional to find which of the displayed five workouts has an id that matches the id of the clicked button
+// once the match is found, send that object to the server to save to database
+
+$("#search-results").on("click", ".saveWorkout", function() {
+  // if workout id matches the input button id, save that work
+  let workoutId = null;
+  let license_author = null;
+  let name = null;
+  let description = null;
+
+  workoutResponse.results.forEach(workout => {
+    if (workout.id === $(this).data("id")) {
+      workoutId = workout.id;
+      license_author = this.license_author;
+      name = this.name;
+      description = this.description;
+    }
+  });
+  $.ajax({
+    type: "POST",
+    url: "/api/workout/<int:pk>/save/",
+    data: {
+      id: workoutId,
+      license_author: license_author,
+      name: name,
+      description: description
+    },
+    success: console.log("successfully added workout to database"),
+    error: console.log("ERROR, could not save workout to database")
+  });
+});
 
 // ####################################### AJAX CALLS ############################################
 
@@ -86,14 +127,6 @@ $("#find-button").on("click", function(e) {
     });
   }
 });
-
-// const saveWorkout = () => {
-//     let
-//     $.ajax({
-//         method: "POST",
-//         url: `api/workout//save`
-//     })
-// }
 
 const renderCustomMeals = response => {
   let meals = JSON.parse(response.meals);

@@ -15,8 +15,6 @@ def landing(request):
     return render(request, "fitness_app/landing.html", {})
 
 
-
-
 def profile(request, username):
     user = User.objects.get(username=username)
     return render(request, "fitness_app/profile.html", {"username": username})
@@ -110,8 +108,12 @@ def find_workout(request, muscle):
 
 # POST
 
-def save_workout(request):
-    print("placeholder")
+def save_workout(request, id, license_author, name, description):
+    workout = Workout.objects.get(id=id)
+    # check user's profile for workout
+    # if it does not exist in profile, create it
+    # save it
+    r = requests.POST(id=id, license_author=license_author, name=name, description=description)
 
 ################ FOOD API ############
 
