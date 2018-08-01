@@ -82,6 +82,15 @@ def logout_view(request):
 def homepage(request):
     return render(request, "fitness_app/homepage.html")
 
+def custom_meals(request):
+    meals = Custom_Meal.objects.all()
+    return JsonResponse(meals, safe=False)
+    print("placeholder")
+
+def custom_circuits(request):
+    circuits = Custom_Circuit.objects.all()
+    print("placeholder")
+
 
 ############# PROFILE ###########
 
