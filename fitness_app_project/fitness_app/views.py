@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 # from .models import User
-# from .models import User, Custom_Meals, Custom_Circuit
+from .models import Custom_Meal, Custom_Circuit
 # from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, SignupForm
 from django.contrib import auth
@@ -84,12 +84,11 @@ def homepage(request):
 
 def custom_meals(request):
     meals = Custom_Meal.objects.all()
-    return JsonResponse(meals, safe=False)
-    print("placeholder")
+    return HttpResponse(meals, content_type='application/json')
 
 def custom_circuits(request):
     circuits = Custom_Circuit.objects.all()
-    print("placeholder")
+    return HttpResponse(circuits, content_type='application/json')
 
 
 ############# PROFILE ###########

@@ -70,7 +70,7 @@ $("#find-button").on("click", function(e) {
     let food = foodInput.replace(/" "/g, "%20");
     console.log(food);
     $.ajax({
-      type: "GET",
+      method: "GET",
       url: "/api/food/find/" + food,
       success: renderFoodSuccess,
       error: error
@@ -79,7 +79,7 @@ $("#find-button").on("click", function(e) {
     let muscle = $("#muscle-selection").val();
     console.log("invoked");
     $.ajax({
-      type: "GET",
+      method: "GET",
       url: "/api/workout/find/" + muscle,
       success: renderWorkoutSuccess,
       error: error
@@ -94,3 +94,17 @@ $("#find-button").on("click", function(e) {
 //         url: `api/workout//save`
 //     })
 // }
+
+const renderCustomMeals = response => {
+  console.log(response);
+};
+
+const hello = () => {
+  console.log("test");
+  $.ajax({
+    method: "GET",
+    url: "/api/custommeals/",
+    success: renderCustomMeals,
+    error: error
+  });
+};
