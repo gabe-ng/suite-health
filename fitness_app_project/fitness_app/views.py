@@ -8,7 +8,7 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 import requests
 import json
 from django.contrib.auth.models import User
-from pprint import pprint
+from django.core import serializers
 
 
 def landing(request):
@@ -83,11 +83,13 @@ def homepage(request):
 
 def custom_meals(request):
     meals = Custom_Meal.objects.all()
-    return HttpResponse(meals, content_type='application/json')
+    data = serializers.serialize('json', meals)
+    return JsonResponse({ 'meals': data })
 
 def custom_circuits(request):
     circuits = Custom_Circuit.objects.all()
-    return HttpResponse(circuits, content_type='application/json')
+    data = serializers.serialize('json', circuits)
+    return JsonResponse({ 'circuits': data })
 
 
 ############# PROFILE ###########
