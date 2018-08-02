@@ -139,9 +139,10 @@ def find_workout(request, muscle):
 
 # POST
 @csrf_exempt
-def save_workout(request, username):
-    r = requests.post(url='http://localhost:8000/homepage/', data = data)
-    console.log('workout saved from SAVE_WORKOUT function in views')
+def save_workout(request, data):
+    print(request)
+    url = 'http://localhost:8000/homepage/'
+    r = requests.post(url=url, data=request.body)
     # r = requests.post(url = API_ENDPOINT, data = data)
 
 ################ FOOD API ############

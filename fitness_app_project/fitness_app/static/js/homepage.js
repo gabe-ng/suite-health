@@ -94,6 +94,7 @@ $("#search-results").on("click", ".saveWorkout", function() {
       name: name,
       description: description
     },
+    dataType: "application/json",
     success: function(response, err) {
       if (err) {
         console.log(err);
