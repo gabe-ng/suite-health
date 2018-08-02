@@ -7,24 +7,24 @@ body {
   font-family: "Nunito", sans-serif;
   font-size: 16px;
   margin: 0;
-  background-color: #fff2ec;
-  color: #70b2ad;
+  background-color: #02243e;
+  color: #2cdad9;
 }
 
 h1 {
   margin: 0;
   padding: 0.5em;
-  color: #70b2a3;
+  color: #2cdad9;
 }
 
 nav {
-  background-color: #ffded2;
+  background-color: #146381;
   padding-bottom: 5px;
 }
 
 a {
   text-decoration: none;
-  color: #70b2a3;
+  color: #2cdad9;
 }
 
 p {
@@ -41,7 +41,7 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
-  background-color: #ffded2;
+  background-color: #146381;
 }
 
 .aHeader {
@@ -154,13 +154,13 @@ Homepage
 }
 
 .circuit-feed {
-  background-color: white;
+  background-color: #02243e;
   height: 100%;
   width: 100%;
 }
 
 .meal-feed {
-  background-color: lightgrey;
+  background-color: #02243e;
   height: 100%;
   width: 100%;
 }
@@ -183,7 +183,7 @@ Homepage
 }
 
 .search-results {
-  background-color: #fff2ec;
+  background-color: #02243e;
   height: 100%;
   width: 100%;
 }
