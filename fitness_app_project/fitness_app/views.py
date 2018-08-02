@@ -52,6 +52,15 @@ def mealForm(request):
     else:
         return render(request, "fitness_app/meals.html")
 
+## delete ##
+def deleteMeal(request):
+    objects = Custom_Meal.objects.all()
+    return render('dashboard', username = user.username)
+    if request.method == "POST":
+        # Fetch list of items to delete, by ID
+        items_to_delete = request.POST.getlist('delete_items')
+        # Delete those items all in one go
+        Custom_Meal.objects.filter(pk__in=items_to_delete).delete()
 
 ############## LOG IN ############
 
