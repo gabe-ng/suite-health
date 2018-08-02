@@ -34,13 +34,26 @@ const error = (err1, err2, err3) => {
 
 ///////////////// Render Food and Workout Searches ///////////////
 const renderFoodSuccess = response => {
-  console.log(response);
   $("#search-results").empty();
-  response.hints.forEach(food => {
+  $('#sresults').pagination({
+    dataSource: response.hints,
+    pageSize: 5,
+    callback: function(data, pagination) {
+      console.log('data',data);
+        // template method of yourself
+         var html = template(data);
+         $('#search-results').html(html);
+    }
+  })
+};
+
+const template = response => {
+  $("#search-results").empty();
+  response.forEach(food => {
     $("#search-results").append(`
-        <div>
-            <h1>Name: ${food.food.label}</h1>
-            <ul id="${food.food.id}"></ul>
+        <div id="foodResults">
+          <h1>Name: ${food.food.label}</h1>
+          <ul id="${food.food.id}"></ul>
         </div>
     `);
     for (let nutrient in food.food.nutrients) {
@@ -50,13 +63,27 @@ const renderFoodSuccess = response => {
         `);
     }
   });
-};
+}
 
 const renderWorkoutSuccess = response => {
-  workoutResponse = response;
+  workoutResponse = response.results;
+  console.log('Workout Res  = ', response)
   $("#search-results").empty();
-  response.results.forEach(workout => {
-    // console.log(workout.id);
+  $('#sresults').pagination({
+    dataSource: workoutResponse,
+    pageSize: 4,
+    callback: function(data, pagination) {
+      console.log('data',data);
+        // template method of yourself
+         var html = template2(data);
+         $('#search-results').html(html);
+    }
+  })
+};
+
+const template2 = workoutResponse => {
+  $("#search-results").empty();
+  workoutResponse.forEach(workout => {
     $("#search-results").append(`
           <div id="${workout.id} class="rendered-workouts">
             <h1>Author: ${workout.license_author}</h1>
@@ -74,7 +101,30 @@ const renderWorkoutSuccess = response => {
       } data-id='${workout.id}'>`
     );
   });
-};
+}
+
+
+//   response.results.forEach(workout => {
+//     $("#search-results").append(`
+//           <div id="${workout.id} class="rendered-workouts" "${resultCounter}">
+//             <h1>Author: ${workout.license_author}</h1>
+//             <p>Name: ${workout.name}</p>
+//             <p>Description: ${workout.description}</p>
+//             <ul id="muscle-group-${workout.id}"></ul>
+//           </div>
+//     `);
+//     workout.muscles.forEach(muscleNum => {
+//       $(`#muscle-group-${workout.id}`).append(`<li>${muscles[muscleNum]}</li>`);
+//     });
+//     $("#search-results").append(
+//       `<input value='Save this workout' type='submit' class='saveWorkout' id=${
+//         workout.id
+//       } data-id='${workout.id}'>`
+//     );
+//   });
+// };
+
+
 
 $("#find-button").on("click", function(e) {
   e.preventDefault();
