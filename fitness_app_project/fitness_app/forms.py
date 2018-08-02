@@ -1,4 +1,5 @@
 from django import forms
+from .models import Workout
 from django.contrib.auth.models import User
 
 class LoginForm(forms.Form):
@@ -15,16 +16,21 @@ class SignupForm(forms.Form):
       fields = ['username', 'password', 'confirm_password']
 
 
-class CreateCircuitForm(forms.form):
-    name = models.CharField(max_length=50)
-    workouts = models.TextField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='circuits')
+# class CreateCircuitForm(forms.Form):
+#     name = forms.CharField(max_length=50)
+#     workouts = forms.TextField()
+#     user = forms.ForeignKey(User, on_delete=models.CASCADE, related_name='circuits')
 
 
-class CreateMealForm(forms.form):
-    label = models.CharField(max_length=100)
-    ingredients = models.TextField()
-    instructions = models.TextField()
-    portions = models.TextField()
-    macros = models.TextField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='meals')
+# class CreateMealForm(forms.Form):
+#     label = models.CharField(max_length=100)
+#     ingredients = models.TextField()
+#     instructions = models.TextField()
+#     portions = models.TextField()
+#     macros = models.TextField()
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='meals')
+
+class WorkoutForm(forms.ModelForm):
+    class Meta:
+        model = Workout
+        fields = ('workoutId', 'author', 'name', 'description', 'muscles')

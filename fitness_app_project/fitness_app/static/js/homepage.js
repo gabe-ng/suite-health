@@ -101,14 +101,17 @@ $("#find-button").on("click", function(e) {
 
 /////////////////////// Save workouts and meals ////////////////////
 $("#search-results").on("click", ".saveWorkout", function() {
+  console.log("in search");
   // if workout id matches the input button id, save that work
   let workoutId = null;
   let license_author = null;
   let name = null;
   let description = null;
+  let muscles = "muscles";
 
   workoutResponse.results.forEach(workout => {
     if (workout.id === $(this).data("id")) {
+      console.log(workout);
       workoutId = workout.id;
       license_author = workout.license_author;
       name = workout.name;
@@ -121,18 +124,14 @@ $("#search-results").on("click", ".saveWorkout", function() {
     url: "/api/workout/save/tevinrawls/",
     dataType: "application/json",
     data: {
-      id: workoutId,
-      license_author: license_author,
+      workoutId: workoutId,
+      author: license_author,
       name: name,
-      description: description
+      description: description,
+      muscles: "muscles"
     },
-    success: function(response, err) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log("In SAVE WORKOUT AJAX, Success");
-      }
-    }
+    dataType: "application/json",
+    success: console.log("success")
   });
 });
 

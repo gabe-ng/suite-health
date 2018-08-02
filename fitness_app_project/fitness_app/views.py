@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Custom_Meal, Custom_Circuit
 # from django.contrib.auth.decorators import login_required
-# from .forms import LoginForm, SignupForm
+from .forms import WorkoutForm 
 from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -150,10 +150,19 @@ def find_workout(request, muscle):
 
 # POST
 @csrf_exempt
-def save_workout(request, data):
-    r = requests.post(url='http://localhost:8000/homepage/', data = data)
-    console.log('workout saved from SAVE_WORKOUT function in views')
-
+def save_workout(request, username):
+    form = WorkoutForm(request.POST)
+    if request.method == 'POST':
+        print('in if', str(form))
+        if form.is_valid():
+            print('if')
+            workout = form.save(commit=False)
+            workout.user = request.user
+            workout.save()
+            return redirect('homepage')
+    else:
+        form = WorkoutForm()
+    return render(request, 'fitness_app/homepage.html', {'form':form})
 
 ################ FOOD API ############
 def find_food(request, food):
