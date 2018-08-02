@@ -24,14 +24,14 @@ let muscles = {
   15: "Calves"
 };
 
-// muscle endpoint
-// exercise category
+//////////////////// Handle Errors //////////////////
 const error = (err1, err2, err3) => {
   console.log(err1);
   console.log(err2);
   console.log(err3);
 };
 
+///////////////// Render Food and Workout Searches ///////////////
 const renderFoodSuccess = response => {
   console.log(response);
   $("#search-results").empty();
@@ -75,6 +75,31 @@ const renderWorkoutSuccess = response => {
   });
 };
 
+$("#find-button").on("click", function(e) {
+  e.preventDefault();
+  if ($("#search-type").val() === "food") {
+    let foodInput = $("#food-selection").val();
+    let food = foodInput.replace(/" "/g, "%20");
+    console.log(food);
+    $.ajax({
+      method: "GET",
+      url: "/api/food/find/" + food,
+      success: renderFoodSuccess,
+      error: error
+    });
+  } else if ($(".form-control").val() === "workouts") {
+    let muscle = $("#muscle-selection").val();
+    console.log("invoked");
+    $.ajax({
+      method: "GET",
+      url: "/api/workout/find/" + muscle,
+      success: renderWorkoutSuccess,
+      error: error
+    });
+  }
+});
+
+/////////////////////// Save workouts and meals ////////////////////
 $("#search-results").on("click", ".saveWorkout", function() {
   // if workout id matches the input button id, save that work
   let workoutId = null;
@@ -110,32 +135,7 @@ $("#search-results").on("click", ".saveWorkout", function() {
   });
 });
 
-// ####################################### AJAX CALLS ############################################
-
-$("#find-button").on("click", function(e) {
-  e.preventDefault();
-  if ($("#search-type").val() === "food") {
-    let foodInput = $("#food-selection").val();
-    let food = foodInput.replace(/" "/g, "%20");
-    console.log(food);
-    $.ajax({
-      method: "GET",
-      url: "/api/food/find/" + food,
-      success: renderFoodSuccess,
-      error: error
-    });
-  } else if ($(".form-control").val() === "workouts") {
-    let muscle = $("#muscle-selection").val();
-    console.log("invoked");
-    $.ajax({
-      method: "GET",
-      url: "/api/workout/find/" + muscle,
-      success: renderWorkoutSuccess,
-      error: error
-    });
-  }
-});
-
+/////////////////////// Render Custom Meals and Circuits to Feed /////////
 const renderCustomMeals = response => {
   let meals = JSON.parse(response.meals);
   console.log(meals);
@@ -176,3 +176,5 @@ $.ajax({
   success: renderCustomCircuits,
   error: error
 });
+
+///////////////////////////// /////////////////////

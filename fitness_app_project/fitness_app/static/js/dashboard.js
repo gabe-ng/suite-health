@@ -8,3 +8,11 @@
 //   });
 //   $('#foodList')
 // })
+console.log("yo");
+$("#mealList").on("click", "input[name='delete_items]'", function(e) {
+  e.preventDefault();
+  console.log("in delete mode");
+  $(this)
+    .parent()
+    .remove();
+});
