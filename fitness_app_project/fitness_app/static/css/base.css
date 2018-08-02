@@ -33,7 +33,13 @@ p {
 }
 input {
   padding: 10px;
-  margin-top: 5px;
+  margin: 1em;
+}
+
+form {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 footer {
@@ -98,19 +104,21 @@ Dashboard
 .mainWrapper {
   display: flex;
   flex-direction: row;
-  border: solid 1px black;
+
   height: 100%;
   width: 100%;
-}
-.infoCreate {
-  width: 40%;
 }
 
 .userInfo {
   height: 94%;
-  border: solid 1px black;
-  margin: 2% 2% 0 1%;
+  border: solid 1px #2cdad9;
+  margin: 1em;
   text-align: center;
+}
+
+#userInformation {
+  min-height: 50vh;
+  max-width: 15em;
 }
 
 .mealCreate,
@@ -125,15 +133,36 @@ Dashboard
 }
 
 .savedFood {
-  height: 49%;
-  margin-top: 2%;
-  margin-bottom: 3%;
-  border: solid 1px black;
+  margin: 1em;
+  border: solid 1px #2cdad9;
 }
 .savedWorkout {
-  height: 49%;
-  margin-bottom: 4%;
-  border: solid 1px black;
+  margin: 1em;
+  border: solid 1px #2cdad9;
+}
+
+#workoutList {
+  display: flex;
+  flex-direction: column;
+}
+
+#mealList {
+  display: flex;
+  flex-direction: column;
+}
+
+#createMeal {
+  padding: 1em;
+  margin: 1em;
+  background-color: transparent;
+  border: 1px solid #2cdad9;
+}
+
+#createCircuit {
+  padding: 1em;
+  margin: 1em;
+  background-color: transparent;
+  border: 1px solid #2cdad9;
 }
 
 /*
@@ -186,6 +215,8 @@ Homepage
   background-color: #02243e;
   height: 100%;
   width: 100%;
+  padding-left: 5em;
+  max-width: 30em;
 }
 
 /* Chatbot */
