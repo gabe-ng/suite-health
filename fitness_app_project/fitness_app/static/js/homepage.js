@@ -107,7 +107,7 @@ $("#search-results").on("click", ".saveWorkout", function() {
   let license_author = null;
   let name = null;
   let description = null;
-  let muscles = "muscles";
+  let muscles = null;
 
   workoutResponse.results.forEach(workout => {
     if (workout.id === $(this).data("id")) {
@@ -116,6 +116,7 @@ $("#search-results").on("click", ".saveWorkout", function() {
       license_author = workout.license_author;
       name = workout.name;
       description = workout.description;
+      muscles = workout.muscles;
     }
   });
 
@@ -128,7 +129,7 @@ $("#search-results").on("click", ".saveWorkout", function() {
       author: license_author,
       name: name,
       description: description,
-      muscles: "muscles"
+      muscles: muscles
     },
     dataType: "application/json",
     success: console.log("success")
