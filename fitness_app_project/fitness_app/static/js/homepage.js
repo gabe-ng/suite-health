@@ -45,7 +45,7 @@ const renderFoodSuccess = response => {
     for (let nutrient in food.food.nutrients) {
       let measure = food.food.nutrients[nutrient];
       $(`#${food.food.id}`).append(`
-            <li>${nutrient} : ${measure}</li>
+            <li>${nutrient} : ${measure.toFixed(2)}</li>
         `);
     }
   });

@@ -36,7 +36,7 @@ input {
   margin: 1em;
 }
 
-form{
+form {
   width: 80%;
   margin-right: auto;
   margin-left: auto;
@@ -141,12 +141,12 @@ Dashboard
   border: solid 1px #2cdad9;
 }
 
-#workoutList{
+#workoutList {
   display: flex;
   flex-direction: column;
 }
 
-#mealList{
+#mealList {
   display: flex;
   flex-direction: column;
 }
@@ -164,19 +164,6 @@ Dashboard
   background-color: transparent;
   border: 1px solid #2cdad9;
 }
-
-#createMeal:hover {
-  transition: 0.3s;
-  color: #02243e;
-  background: #2cdad9;
-}
-
-#createCircuit:hover {
-  transition: 0.3s;
-  color: #1ef3f2;
-  background:
-}
-
 
 /*
 Homepage
@@ -230,7 +217,6 @@ Homepage
   width: 100%;
   padding-left: 5em;
   max-width: 30em;
-
 }
 
 /* Chatbot */
@@ -264,4 +250,3 @@ Homepage
 .hide {
   display: none;
 }
-
