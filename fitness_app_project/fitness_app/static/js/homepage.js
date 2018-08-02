@@ -93,12 +93,13 @@ $("#search-results").on("click", ".saveWorkout", function() {
 
   $.ajax({
     type: "POST",
-    url: "/api/workout/save/bjimison/",
+    url: "/api/workout/save/tevinrawls/",
+    dataType: "application/json",
     data: {
       id: workoutId,
       license_author: license_author,
       name: name,
-      description: description
+      description: description,
     },
     success: function(response, err) {
       if (err) {
@@ -106,7 +107,7 @@ $("#search-results").on("click", ".saveWorkout", function() {
       } else {
         console.log("In SAVE WORKOUT AJAX, Success");
       }
-    }
+    },
   });
 });
 

@@ -139,14 +139,14 @@ def find_workout(request, muscle):
 
 # POST
 @csrf_exempt
-def save_workout(request, username):
+def save_workout(request, data):
     r = requests.post(url='http://localhost:8000/homepage/', data = data)
     console.log('workout saved from SAVE_WORKOUT function in views')
-    # r = requests.post(url = API_ENDPOINT, data = data)
+
 
 ################ FOOD API ############
 def find_food(request, food):
-    print (food)
+    print(food)
     url = 'https://api.edamam.com/api/food-database/parser?ingr='+ food + '&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401'
     r = requests.get(url=url)
     return HttpResponse(r, content_type='application/json')
