@@ -137,32 +137,30 @@ $("#search-results").on("click", ".saveWorkout", function() {
   });
 });
 
-// ####################################### AJAX CALLS ############################################
-
-$("#find-button").on("click", function(e) {
-  e.preventDefault();
-  if ($("#search-type").val() === "food") {
-    let foodInput = $("#food-selection").val();
-    console.log(foodInput);
-    let food = encodeURIComponent(foodInput);
-    console.log(food);
-    $.ajax({
-      method: "GET",
-      url: "/api/food/find/" + food,
-      success: renderFoodSuccess,
-      error: error
-    });
-  } else if ($(".form-control").val() === "workouts") {
-    let muscle = $("#muscle-selection").val();
-    console.log("invoked");
-    $.ajax({
-      method: "GET",
-      url: "/api/workout/find/" + muscle,
-      success: renderWorkoutSuccess,
-      error: error
-    });
-  }
-});
+// $("#find-button").on("click", function(e) {
+//   e.preventDefault();
+//   if ($("#search-type").val() === "food") {
+//     let foodInput = $("#food-selection").val();
+//     console.log(foodInput);
+//     let food = encodeURIComponent(foodInput);
+//     console.log(food);
+//     $.ajax({
+//       method: "GET",
+//       url: "/api/food/find/" + food,
+//       success: renderFoodSuccess,
+//       error: error
+//     });
+//   } else if ($(".form-control").val() === "workouts") {
+//     let muscle = $("#muscle-selection").val();
+//     console.log("invoked");
+//     $.ajax({
+//       method: "GET",
+//       url: "/api/workout/find/" + muscle,
+//       success: renderWorkoutSuccess,
+//       error: error
+//     });
+//   }
+// });
 
 const renderCustomMeals = response => {
   let meals = JSON.parse(response.meals);
