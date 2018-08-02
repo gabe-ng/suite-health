@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Custom_Meal, Custom_Circuit
+from .models import Custom_Meal, Custom_Circuit, Workout, Food
 # from django.contrib.auth.decorators import login_required
-from .forms import WorkoutForm 
+from .forms import WorkoutForm
 from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -55,13 +55,23 @@ def mealForm(request):
 ## delete ##
 def delete_meal(request, username, id):
     user = User.objects.get(username = username)
-    circuit = Custom_Meal.objects.get(id=id).delete()
+    meal = Custom_Meal.objects.get(id=id).delete()
     return redirect('dashboard', username = user.username)
 
 
 def delete_circuit(request, username, id):
     user = User.objects.get(username = username)
     circuit = Custom_Circuit.objects.get(id=id).delete()
+    return redirect('dashboard', username = user.username)
+
+def delete_workout(request, username, id):
+    user = User.objects.get(username = username)
+    workout = Workout.objects.get(id=id).delete()
+    return redirect('dashboard', username = user.username)
+
+def delete_food(request, username, id):
+    user = User.objects.get(username = username)
+    food = Food.objects.get(id=id).delete()
     return redirect('dashboard', username = user.username)
 
 ############## LOG IN ############

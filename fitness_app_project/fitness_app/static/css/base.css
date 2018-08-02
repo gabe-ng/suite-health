@@ -42,6 +42,37 @@ form {
   margin-left: auto;
 }
 
+input[type="submit"] {
+  font-size: 1em;
+  color: #2cdad9;
+  padding: 0.5em;
+  margin: 1.5em 0.5em 0.5em 0.5em;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #2cdad9;
+}
+
+input[type="submit"]:hover {
+  background-color: #2cdad9;
+  color: #02243e;
+}
+
+select,
+input[type="text"],
+input[type="password"] {
+  font-size: 1em;
+  color: #2cdad9;
+  padding: 0.5em;
+  margin: 1.5em 0.5em 0.5em 0.5em;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #2cdad9;
+}
+
+::placeholder {
+  color: #19779c;
+}
+
 footer {
   position: fixed;
   bottom: 0;
@@ -152,15 +183,17 @@ Dashboard
 }
 
 #createMeal {
-  padding: 1em;
-  margin: 1em;
+  font-size: 1em;
+  padding: 0.5em;
+  margin: 1.5em 0.5em 0.5em 0.5em;
   background-color: transparent;
   border: 1px solid #2cdad9;
 }
 
 #createCircuit {
-  padding: 1em;
-  margin: 1em;
+  font-size: 1em;
+  padding: 0.5em;
+  margin: 1.5em 0.5em 0.5em 0.5em;
   background-color: transparent;
   border: 1px solid #2cdad9;
 }
@@ -168,6 +201,10 @@ Dashboard
 /*
 Homepage
 ================================================*/
+
+#username {
+  display: none;
+}
 
 .homepage-content {
   display: flex;
@@ -180,18 +217,22 @@ Homepage
   flex-direction: column;
   width: 25%;
   height: 85vh;
+  position: relative;
 }
 
 .circuit-feed {
   background-color: #02243e;
   height: 100%;
   width: 100%;
+  border-bottom: 1px solid white;
+  overflow: auto;
 }
 
 .meal-feed {
   background-color: #02243e;
   height: 100%;
   width: 100%;
+  overflow: auto;
 }
 
 .search-content {
