@@ -45,7 +45,7 @@ const renderFoodSuccess = response => {
     for (let nutrient in food.food.nutrients) {
       let measure = food.food.nutrients[nutrient];
       $(`#${food.food.id}`).append(`
-            <li>${nutrient} : ${measure}</li>
+            <li>${nutrient} : ${measure.toFixed(2)}</li>
         `);
     }
   });
@@ -121,7 +121,8 @@ $("#search-results").on("click", ".saveWorkout", function() {
 
   $.ajax({
     type: "POST",
-    url: "/api/workout/save/bjimison/",
+    url: "/api/workout/save/tevinrawls/",
+    dataType: "application/json",
     data: {
       workoutId: workoutId,
       author: license_author,
@@ -134,19 +135,45 @@ $("#search-results").on("click", ".saveWorkout", function() {
   });
 });
 
-/////////////////////// Render Custom Meals and Circuits to Feed /////////
+// ####################################### AJAX CALLS ############################################
+
+$("#find-button").on("click", function(e) {
+  e.preventDefault();
+  if ($("#search-type").val() === "food") {
+    let foodInput = $("#food-selection").val();
+    console.log(foodInput);
+    let food = encodeURIComponent(foodInput);
+    console.log(food);
+    $.ajax({
+      method: "GET",
+      url: "/api/food/find/" + food,
+      success: renderFoodSuccess,
+      error: error
+    });
+  } else if ($(".form-control").val() === "workouts") {
+    let muscle = $("#muscle-selection").val();
+    console.log("invoked");
+    $.ajax({
+      method: "GET",
+      url: "/api/workout/find/" + muscle,
+      success: renderWorkoutSuccess,
+      error: error
+    });
+  }
+});
+
 const renderCustomMeals = response => {
   let meals = JSON.parse(response.meals);
   console.log(meals);
   for (let i = 0; i < meals.length; i++) {
     let meal = meals[i];
     $("#meal-feed").append(`<div id="${meal.pk}">
-                  <h6>Name: ${meal.fields.label}</h6>
+                  <h1>Name: ${meal.fields.label}</h1>
                   <p>Ingredients: ${meal.fields.ingredients}</p>
                   <p>Instructions: ${meal.fields.instructions}</p>
                   <p>Portions: ${meal.fields.portions}</p>
                   <p>Macros: ${meal.fields.macros}</p>
-                    </div>`);
+                    </div><hr>`);
   }
 };
 
@@ -156,9 +183,9 @@ const renderCustomCircuits = response => {
   for (let i = 0; i < circuits.length; i++) {
     let circuit = circuits[i];
     $("#circuit-feed").append(`<div id="${circuit.pk}">
-                  <h6>Name: ${circuit.fields.name}</h6>
+                  <h1>Name: ${circuit.fields.name}</h1>
                   <p>Workouts: ${circuit.fields.workouts}</p>
-                    </div>`);
+                    </div><hr>`);
   }
 };
 
@@ -176,4 +203,17 @@ $.ajax({
   error: error
 });
 
-///////////////////////////// /////////////////////
+///////////////////////////// Render Proper Form /////////////////
+$("#search-type").on("change", function() {
+  console.log("hello");
+  console.log(this);
+  let val = $(this).val();
+  console.log(val);
+  if (val == "workouts") {
+    $("#muscle-select-span").css("display", "inline-block");
+    $("#food-selection").css("display", "none");
+  } else if (val == "food") {
+    $("#food-selection").css("display", "block");
+    $("#muscle-select-span").css("display", "none");
+  }
+});

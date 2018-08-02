@@ -1,22 +1,22 @@
 {% extends 'fitness_app/base.html' %} {% block content %}
 <div class="mainWrapper">
 
-  <div class="infoCreate">
-    <div class="userInfo">
-      <h2>User Info</h2>
-    </div>
-    <div class="createBtns">
-      <button id="createCircuit"><a href="{% url 'circuits' %}">create circuit</a></button>
-      <button id="createMeal"><a href="{% url 'meals' %}">create meal</a></button>
-    </div>
+<div class="userInfo">
+  <h2>User Info</h2>
+  <div id="userInformation"></div>
+  <div class="createBtns">
+    <button id="createCircuit"><a href="{% url 'circuits' %}">create circuit</a></button>
+    <button id="createMeal"><a href="{% url 'meals' %}">create meal</a></button>
   </div>
+</div>
 
   <div class="healthWrapper">
     <div class="savedFood">
       <h3>Saved Workouts</h3>
       <div id="workoutList">
         {% for circuit in circuits %}
-        {{ circuit.name }}
+          <p>{{ circuit.name }} :
+          <a href="{% url 'delete_circuit' username=user.username id=circuit.id %}">delete</a></p>
         {% endfor %}
       </div>
     </div>
@@ -24,14 +24,14 @@
       <h3>Saved Meals</h3>
       <div id="mealList">
         {% for meal in meals %}
-          <form method="POST">
-            {% csrf_token %}
-            <p>{{ meal.label }} <input type="submit" name="delete_items" value="delete"></p>
-          </form>
+          <p>{{ meal.label }} :
+          <a href="{% url 'delete_meal' username=user.username id=meal.id %}">delete</a></p>
         {% endfor %}
       </div>
     </div>
   </div>
+<div id="selectedInfo">
 
+</div>
 </div>
 {% endblock %}
