@@ -142,12 +142,12 @@ const renderCustomMeals = response => {
   for (let i = 0; i < meals.length; i++) {
     let meal = meals[i];
     $("#meal-feed").append(`<div id="${meal.pk}">
-                  <h6>Name: ${meal.fields.label}</h6>
+                  <h1>Name: ${meal.fields.label}</h1>
                   <p>Ingredients: ${meal.fields.ingredients}</p>
                   <p>Instructions: ${meal.fields.instructions}</p>
                   <p>Portions: ${meal.fields.portions}</p>
                   <p>Macros: ${meal.fields.macros}</p>
-                    </div>`);
+                    </div><hr>`);
   }
 };
 
@@ -157,9 +157,9 @@ const renderCustomCircuits = response => {
   for (let i = 0; i < circuits.length; i++) {
     let circuit = circuits[i];
     $("#circuit-feed").append(`<div id="${circuit.pk}">
-                  <h6>Name: ${circuit.fields.name}</h6>
+                  <h1>Name: ${circuit.fields.name}</h1>
                   <p>Workouts: ${circuit.fields.workouts}</p>
-                    </div>`);
+                    </div><hr>`);
   }
 };
 
