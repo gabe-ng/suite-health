@@ -5,6 +5,7 @@ $(".chatbot-icon").on("click", function() {
 });
 
 let workoutResponse = null;
+let username = document.getElementById("username");
 
 let muscles = {
   1: "Biceps Long Head",
@@ -122,7 +123,7 @@ $("#search-results").on("click", ".saveWorkout", function() {
 
   $.ajax({
     type: "POST",
-    url: "/api/workout/save/tevinrawls/",
+    url: "/api/workout/save/" + username,
     dataType: "application/json",
     data: {
       workoutId: workoutId,
