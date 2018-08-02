@@ -21,7 +21,7 @@ let muscles = {
   12: "Lats",
   13: "Bicep Short Head",
   14: "Obliques",
-  15: "Calves",
+  15: "Calves"
 };
 
 //////////////////// Handle Errors //////////////////
@@ -124,7 +124,7 @@ $("#search-results").on("click", ".saveWorkout", function() {
       id: workoutId,
       license_author: license_author,
       name: name,
-      description: description,
+      description: description
     },
     success: function(response, err) {
       if (err) {
@@ -132,7 +132,7 @@ $("#search-results").on("click", ".saveWorkout", function() {
       } else {
         console.log("In SAVE WORKOUT AJAX, Success");
       }
-    },
+    }
   });
 });
 
@@ -204,4 +204,17 @@ $.ajax({
   error: error
 });
 
-///////////////////////////// /////////////////////
+///////////////////////////// Render Proper Form /////////////////
+$("#search-type").on("change", function() {
+  console.log("hello");
+  console.log(this);
+  let val = $(this).val();
+  console.log(val);
+  if (val == "workouts") {
+    $("#muscle-select-span").css("display", "inline-block");
+    $("#food-selection").css("display", "none");
+  } else if (val == "food") {
+    $("#food-selection").css("display", "block");
+    $("#muscle-select-span").css("display", "none");
+  }
+});

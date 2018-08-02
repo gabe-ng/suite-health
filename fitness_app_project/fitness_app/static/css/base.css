@@ -209,6 +209,11 @@ Homepage
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding-top: 1em;
+}
+
+#food-selection {
+  display: none;
 }
 
 .search-results {
