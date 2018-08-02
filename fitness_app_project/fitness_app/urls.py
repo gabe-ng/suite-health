@@ -20,6 +20,7 @@ urlpatterns = [
     ############# WORKOUT API #################
     path('api/workout/find/<str:muscle>', views.find_workout, name='find_workout'),
     path('api/workout/save/<username>', views.save_workout, name='save_workout'),
+    path('api/workout/delete/<username>', views.delete_workout, name='delete_workout'),
     path('circuits/', views.circuitForm, name="circuits"),
     ############ CUSTOM MEALS AND CIRCUITS API ###################
     path('api/custommeals/', views.custom_meals, name="custommeals"),
