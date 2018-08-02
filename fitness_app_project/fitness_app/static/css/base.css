@@ -169,6 +169,10 @@ Dashboard
 Homepage
 ================================================*/
 
+#username {
+  display: none;
+}
+
 .homepage-content {
   display: flex;
   height: 100%;
