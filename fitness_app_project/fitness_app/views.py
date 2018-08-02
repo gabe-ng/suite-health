@@ -147,6 +147,8 @@ def custom_circuits(request):
 def dashboard(request, username):
     circuits = Custom_Circuit.objects.filter(user=request.user)
     meals = Custom_Meal.objects.filter(user=request.user)
+    workouts = Workout.objects.filter(user=request.user)
+    foods = Food.objects.filter(user=request.user)
     return render(request, 'fitness_app/dashboard.html', {'circuits':circuits, 'meals':meals})
 
 ################ WORKOUT API ############

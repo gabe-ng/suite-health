@@ -117,10 +117,10 @@ $("#search-results").on("click", ".saveWorkout", function() {
       license_author = workout.license_author;
       name = workout.name;
       description = workout.description;
-      muscles = workout.muscles;
+      muscles = workout.muscles.join(", ");
     }
   });
-
+  console.log("muscles", muscles);
   $.ajax({
     type: "POST",
     url: "/api/workout/save/" + username,
