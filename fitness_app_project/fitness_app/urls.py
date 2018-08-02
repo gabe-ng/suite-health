@@ -12,6 +12,8 @@ urlpatterns = [
     path('homepage/', views.homepage, name="homepage"),
     ############# PROFILE ###############
     path('user/<username>/', views.dashboard, name='dashboard'),
+    path('user/<username>/deletemeal/<int:id>', views.delete_meal, name='delete_meal'),
+    path('user/<username>/deletecircuit/<int:id>', views.delete_circuit, name='delete_circuit'),
     ############# FOOD API #################
     path('api/food/find/<slug:food>', views.find_food, name='find_food'),
     path('meals/', views.mealForm, name="meals"),
