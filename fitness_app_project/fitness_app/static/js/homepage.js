@@ -21,7 +21,7 @@ let muscles = {
   12: "Lats",
   13: "Bicep Short Head",
   14: "Obliques",
-  15: "Calves"
+  15: "Calves",
 };
 
 //////////////////// Handle Errors //////////////////
@@ -118,12 +118,13 @@ $("#search-results").on("click", ".saveWorkout", function() {
 
   $.ajax({
     type: "POST",
-    url: "/api/workout/save/bjimison/",
+    url: "/api/workout/save/tevinrawls/",
+    dataType: "application/json",
     data: {
       id: workoutId,
       license_author: license_author,
       name: name,
-      description: description
+      description: description,
     },
     success: function(response, err) {
       if (err) {
@@ -131,11 +132,37 @@ $("#search-results").on("click", ".saveWorkout", function() {
       } else {
         console.log("In SAVE WORKOUT AJAX, Success");
       }
-    }
+    },
   });
 });
 
-/////////////////////// Render Custom Meals and Circuits to Feed /////////
+// ####################################### AJAX CALLS ############################################
+
+$("#find-button").on("click", function(e) {
+  e.preventDefault();
+  if ($("#search-type").val() === "food") {
+    let foodInput = $("#food-selection").val();
+    console.log(foodInput);
+    let food = encodeURIComponent(foodInput);
+    console.log(food);
+    $.ajax({
+      method: "GET",
+      url: "/api/food/find/" + food,
+      success: renderFoodSuccess,
+      error: error
+    });
+  } else if ($(".form-control").val() === "workouts") {
+    let muscle = $("#muscle-selection").val();
+    console.log("invoked");
+    $.ajax({
+      method: "GET",
+      url: "/api/workout/find/" + muscle,
+      success: renderWorkoutSuccess,
+      error: error
+    });
+  }
+});
+
 const renderCustomMeals = response => {
   let meals = JSON.parse(response.meals);
   console.log(meals);

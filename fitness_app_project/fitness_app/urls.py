@@ -15,11 +15,11 @@ urlpatterns = [
     path('user/<username>/deletemeal/<int:id>', views.delete_meal, name='delete_meal'),
     path('user/<username>/deletecircuit/<int:id>', views.delete_circuit, name='delete_circuit'),
     ############# FOOD API #################
-    path('api/food/find/<slug:food>', views.find_food, name='find_food'),
+    path('api/food/find/<str:food>', views.find_food, name='find_food'),
     path('meals/', views.mealForm, name="meals"),
     ############# WORKOUT API #################
-    path('api/workout/find/<slug:muscle>', views.find_workout, name='find_workout'),
-    path('api/workout/save/<username>/', views.save_workout, name='save_workout'),
+    path('api/workout/find/<str:muscle>', views.find_workout, name='find_workout'),
+    path('api/workout/save/<username>', views.save_workout, name='save_workout'),
     path('circuits/', views.circuitForm, name="circuits"),
     ############ CUSTOM MEALS AND CIRCUITS API ###################
     path('api/custommeals/', views.custom_meals, name="custommeals"),
