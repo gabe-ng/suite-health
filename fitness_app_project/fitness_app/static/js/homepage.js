@@ -21,7 +21,7 @@ let muscles = {
   12: "Lats",
   13: "Bicep Short Head",
   14: "Obliques",
-  15: "Calves",
+  15: "Calves"
 };
 
 //////////////////// Handle Errors //////////////////
@@ -101,14 +101,17 @@ $("#find-button").on("click", function(e) {
 
 /////////////////////// Save workouts and meals ////////////////////
 $("#search-results").on("click", ".saveWorkout", function() {
+  console.log("in search");
   // if workout id matches the input button id, save that work
   let workoutId = null;
   let license_author = null;
   let name = null;
   let description = null;
+  let muscles = "muscles";
 
   workoutResponse.results.forEach(workout => {
     if (workout.id === $(this).data("id")) {
+      console.log(workout);
       workoutId = workout.id;
       license_author = workout.license_author;
       name = workout.name;
@@ -121,18 +124,14 @@ $("#search-results").on("click", ".saveWorkout", function() {
     url: "/api/workout/save/tevinrawls/",
     dataType: "application/json",
     data: {
-      id: workoutId,
-      license_author: license_author,
+      workoutId: workoutId,
+      author: license_author,
       name: name,
       description: description,
+      muscles: "muscles"
     },
-    success: function(response, err) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log("In SAVE WORKOUT AJAX, Success");
-      }
-    },
+    dataType: "application/json",
+    success: console.log("success")
   });
 });
 
@@ -204,4 +203,17 @@ $.ajax({
   error: error
 });
 
-///////////////////////////// /////////////////////
+///////////////////////////// Render Proper Form /////////////////
+$("#search-type").on("change", function() {
+  console.log("hello");
+  console.log(this);
+  let val = $(this).val();
+  console.log(val);
+  if (val == "workouts") {
+    $("#muscle-select-span").css("display", "inline-block");
+    $("#food-selection").css("display", "none");
+  } else if (val == "food") {
+    $("#food-selection").css("display", "block");
+    $("#muscle-select-span").css("display", "none");
+  }
+});
