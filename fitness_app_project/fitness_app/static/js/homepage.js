@@ -49,7 +49,7 @@ const renderWorkoutSuccess = response => {
   workoutResponse = response;
   $("#search-results").empty();
   response.results.forEach(workout => {
-    console.log(workout.id);
+    // console.log(workout.id);
     $("#search-results").append(`
           <div id="${workout.id} class="rendered-workouts">
             <h1>Author: ${workout.license_author}</h1>
@@ -69,10 +69,6 @@ const renderWorkoutSuccess = response => {
   });
 };
 
-// add click listener that triggers and AJAX call
-// inside AJAX call, set conditional to find which of the displayed five workouts has an id that matches the id of the clicked button
-// once the match is found, send that object to the server to save to database
-
 $("#search-results").on("click", ".saveWorkout", function() {
   // if workout id matches the input button id, save that work
   let workoutId = null;
@@ -83,22 +79,28 @@ $("#search-results").on("click", ".saveWorkout", function() {
   workoutResponse.results.forEach(workout => {
     if (workout.id === $(this).data("id")) {
       workoutId = workout.id;
-      license_author = this.license_author;
-      name = this.name;
-      description = this.description;
+      license_author = workout.license_author;
+      name = workout.name;
+      description = workout.description;
     }
   });
+
   $.ajax({
     type: "POST",
-    url: "/api/workout/<int:pk>/save/",
+    url: "/api/workout/save/bjimison/",
     data: {
       id: workoutId,
       license_author: license_author,
       name: name,
       description: description
     },
-    success: console.log("successfully added workout to database"),
-    error: console.log("ERROR, could not save workout to database")
+    success: function(response, err) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("In SAVE WORKOUT AJAX, Success");
+      }
+    }
   });
 });
 
@@ -161,7 +163,6 @@ $.ajax({
   success: renderCustomMeals,
   error: error
 });
-
 
 $.ajax({
   method: "GET",
