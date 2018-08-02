@@ -186,18 +186,22 @@ Homepage
   flex-direction: column;
   width: 25%;
   height: 85vh;
+  position: relative;
 }
 
 .circuit-feed {
   background-color: #02243e;
   height: 100%;
   width: 100%;
+  border-bottom: 1px solid white;
+  overflow: auto;
 }
 
 .meal-feed {
   background-color: #02243e;
   height: 100%;
   width: 100%;
+  overflow: auto;
 }
 
 .search-content {

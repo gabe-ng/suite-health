@@ -175,7 +175,7 @@ const renderCustomMeals = response => {
                   <p>Instructions: ${meal.fields.instructions}</p>
                   <p>Portions: ${meal.fields.portions}</p>
                   <p>Macros: ${meal.fields.macros}</p>
-                    </div><hr>`);
+                    </div>`);
   }
 };
 
@@ -187,7 +187,7 @@ const renderCustomCircuits = response => {
     $("#circuit-feed").append(`<div id="${circuit.pk}">
                   <h1>Name: ${circuit.fields.name}</h1>
                   <p>Workouts: ${circuit.fields.workouts}</p>
-                    </div><hr>`);
+                    </div>`);
   }
 };
 
