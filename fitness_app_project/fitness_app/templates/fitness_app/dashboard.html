@@ -12,7 +12,7 @@
 
   <div class="healthWrapper">
     <div class="savedFood">
-      <h3>Saved Workouts</h3>
+      <h3>Saved Circuit</h3>
       <div id="workoutList">
         {% for circuit in circuits %}
         <p>{{ circuit.name }} :
@@ -32,8 +32,27 @@
       </div>
     </div>
   </div>
-  <div id="selectedInfo">
-
+  <div class="healthWrapper">
+    <div class="savedWorkout">
+      <h3>Saved Workouts</h3>
+      <div id="mealList">
+        {% for workout in workouts %}
+        <p>{{ workout.name }} :
+          <a href="{% url 'delete_workout' username=user.username id=workout.id %}">delete</a>
+        </p>
+        {% endfor %}
+      </div>
+    </div>
+        <div class="savedWorkout">
+      <h3>Saved Food</h3>
+      <div id="mealList">
+        {% for food in foods %}
+        <p>{{ food.label }} :
+          <a href="{% url 'delete_food' username=user.username id=food.id %}">delete</a>
+        </p>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
