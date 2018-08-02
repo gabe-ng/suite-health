@@ -7,28 +7,28 @@ body {
   font-family: "Nunito", sans-serif;
   font-size: 16px;
   margin: 0;
-  background-color: #FFF2EC;
-  color: #70B2AD;
+  background-color: #fff2ec;
+  color: #70b2ad;
 }
 
 h1 {
   margin: 0;
-  padding: .5em;
-  color: #70B2A3;
+  padding: 0.5em;
+  color: #70b2a3;
 }
 
 nav {
-  background-color: #FFDED2;
+  background-color: #ffded2;
   padding-bottom: 5px;
 }
 
 a {
   text-decoration: none;
-  color: #70B2A3;
+  color: #70b2a3;
 }
 
 p {
-  padding: .5em;
+  padding: 0.5em;
   margin: 0;
 }
 input {
@@ -41,7 +41,7 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
-  background-color: #FFDED2;
+  background-color: #ffded2;
 }
 
 .aHeader {
@@ -91,7 +91,6 @@ footer {
   justify-content: center;
   flex-direction: column;
 }
-
 
 /*
 Dashboard
@@ -184,7 +183,39 @@ Homepage
 }
 
 .search-results {
-  background-color: #FFF2EC;
+  background-color: #fff2ec;
   height: 100%;
   width: 100%;
+}
+
+/* Chatbot */
+.chatbot-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.chat {
+  position: fixed;
+  bottom: 125px;
+  right: 10px;
+}
+
+.chatbot {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 65px;
+  right: 30px;
+}
+
+.chatbot-icon {
+  max-width: 75px;
+  max-height: 75px;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
 }

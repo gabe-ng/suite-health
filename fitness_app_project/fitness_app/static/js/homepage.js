@@ -1,3 +1,9 @@
+// Chatbot
+$(".chatbot-icon").on("click", function() {
+  console.log("clicked");
+  $(".chat").toggleClass("hide");
+});
+
 let workoutResponse = null;
 
 let muscles = {
