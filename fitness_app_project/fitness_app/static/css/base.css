@@ -221,9 +221,31 @@ Homepage
   height: 100%;
   width: 100%;
   padding-left: 5em;
-  max-width: 30em;
+  max-width: 40em;
+  box-sizing: border-box;
 }
 
+.ulClassName li {
+  display: inline;
+  padding: 0 20px;
+}
+
+.ulClassName li:first {
+  padding-left: 0;
+}
+
+.ulClassName{
+  display: block;
+  list-style-type: none;
+  margin: 0 auto 100px;
+  width: 100% !important;
+}
+
+.paginationjs {
+  max-width: 100px;
+  display: block !important;
+  margin: 0 auto !important;
+}
 /* Chatbot */
 .chatbot-container {
   display: flex;

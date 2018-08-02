@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Custom_Meal, Custom_Circuit
 # from django.contrib.auth.decorators import login_required
-from .forms import WorkoutForm 
+from .forms import WorkoutForm
 from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -10,6 +10,8 @@ import json
 from django.contrib.auth.models import User
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
+
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 def landing(request):
     return render(request, "fitness_app/landing.html", {})
@@ -166,7 +168,6 @@ def save_workout(request, username):
 
 ################ FOOD API ############
 def find_food(request, food):
-    print(food)
     url = 'https://api.edamam.com/api/food-database/parser?ingr='+ food + '&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401'
     r = requests.get(url=url)
     return HttpResponse(r, content_type='application/json')
