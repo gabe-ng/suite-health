@@ -1,10 +1,4 @@
-// $(document).ready(function(){
-//     $.ajax({
-//     url: "http://exbook.herokuapp.com/api/users",
-//     method: 'POST',
-//     data: signData,
-//     success: signSuccess,
-//     error: mapError
-//   });
-//   $('#foodList')
-// })
+$('#createMeal').on('mousein', function(){
+  $('#createMeal').css('background-color', '#2cdad9')
+  $('#createMeal').child().css('color', '#02243e')
+});

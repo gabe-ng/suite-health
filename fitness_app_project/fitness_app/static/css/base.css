@@ -165,6 +165,18 @@ Dashboard
   border: 1px solid #2cdad9;
 }
 
+#createMeal:hover {
+  transition: 0.3s;
+  color: #02243e;
+  background: #2cdad9;
+}
+
+#createCircuit:hover {
+  transition: 0.3s;
+  color: #1ef3f2;
+  background:
+}
+
 
 /*
 Homepage
