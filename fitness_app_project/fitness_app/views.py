@@ -9,7 +9,7 @@ import requests
 import json
 from django.contrib.auth.models import User
 from django.core import serializers
-
+from django.views.decorators.csrf import csrf_exempt
 
 def landing(request):
     return render(request, "fitness_app/landing.html", {})
@@ -138,12 +138,13 @@ def find_workout(request, muscle):
     return HttpResponse(r, content_type='application/json')
 
 # POST
-
-def save_workout(request):
-    print("placeholder")
+@csrf_exempt
+def save_workout(request, username):
+    r = requests.post(url='http://localhost:8000/homepage/', data = data)
+    console.log('workout saved from SAVE_WORKOUT function in views')
+    # r = requests.post(url = API_ENDPOINT, data = data)
 
 ################ FOOD API ############
-
 def find_food(request, food):
     print (food)
     url = 'https://api.edamam.com/api/food-database/parser?ingr='+ food + '&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401'
