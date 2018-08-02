@@ -1,3 +1,9 @@
+// Chatbot
+$(".chatbot-icon").on("click", function() {
+  console.log("clicked");
+  $(".chat").toggleClass("hide");
+});
+
 let workoutResponse = null;
 
 let muscles = {
@@ -18,14 +24,14 @@ let muscles = {
   15: "Calves"
 };
 
-// muscle endpoint
-// exercise category
+//////////////////// Handle Errors //////////////////
 const error = (err1, err2, err3) => {
   console.log(err1);
   console.log(err2);
   console.log(err3);
 };
 
+///////////////// Render Food and Workout Searches ///////////////
 const renderFoodSuccess = response => {
   console.log(response);
   $("#search-results").empty();
@@ -69,44 +75,6 @@ const renderWorkoutSuccess = response => {
   });
 };
 
-$("#search-results").on("click", ".saveWorkout", function() {
-  // if workout id matches the input button id, save that work
-  let workoutId = null;
-  let license_author = null;
-  let name = null;
-  let description = null;
-
-  workoutResponse.results.forEach(workout => {
-    if (workout.id === $(this).data("id")) {
-      workoutId = workout.id;
-      license_author = workout.license_author;
-      name = workout.name;
-      description = workout.description;
-    }
-  });
-
-  $.ajax({
-    type: "POST",
-    url: "/api/workout/save/bjimison/",
-    data: {
-      id: workoutId,
-      license_author: license_author,
-      name: name,
-      description: description
-    },
-    dataType: "application/json",
-    success: function(response, err) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log("In SAVE WORKOUT AJAX, Success");
-      }
-    }
-  });
-});
-
-// ####################################### AJAX CALLS ############################################
-
 $("#find-button").on("click", function(e) {
   e.preventDefault();
   if ($("#search-type").val() === "food") {
@@ -131,6 +99,42 @@ $("#find-button").on("click", function(e) {
   }
 });
 
+/////////////////////// Save workouts and meals ////////////////////
+$("#search-results").on("click", ".saveWorkout", function() {
+  console.log("in search");
+  // if workout id matches the input button id, save that work
+  let workoutId = null;
+  let license_author = null;
+  let name = null;
+  let description = null;
+  let muscles = "muscles";
+
+  workoutResponse.results.forEach(workout => {
+    if (workout.id === $(this).data("id")) {
+      console.log(workout);
+      workoutId = workout.id;
+      license_author = workout.license_author;
+      name = workout.name;
+      description = workout.description;
+    }
+  });
+
+  $.ajax({
+    type: "POST",
+    url: "/api/workout/save/bjimison/",
+    data: {
+      workoutId: workoutId,
+      author: license_author,
+      name: name,
+      description: description,
+      muscles: "muscles"
+    },
+    dataType: "application/json",
+    success: console.log("success")
+  });
+});
+
+/////////////////////// Render Custom Meals and Circuits to Feed /////////
 const renderCustomMeals = response => {
   let meals = JSON.parse(response.meals);
   console.log(meals);
@@ -171,3 +175,5 @@ $.ajax({
   success: renderCustomCircuits,
   error: error
 });
+
+///////////////////////////// /////////////////////

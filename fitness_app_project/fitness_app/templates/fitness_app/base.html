@@ -26,8 +26,20 @@
     {% block content %} {% endblock %}
   </div>
 
+  <div class="chatbot-container">
+    <div class="chat hide">
+      <iframe allow="microphone;" width="350" height="430" src="https://console.dialogflow.com/api-client/demo/embedded/1758506f-9629-42b2-92bb-bbfb80bc9172">
+      </iframe>
+    </div>
+    <div class="chatbot">
+      <img src="{% static 'images/bot.png' %}" alt="" class="chatbot-icon">
+    </div>
+  </div>
+
   <footer>
-    <p>&copy; Dev Team 2018 | <a href="{% url 'about' %}">About Us</a></p>
+    <p>&copy; Dev Team 2018 |
+      <a href="{% url 'about' %}">About Us</a>
+    </p>
   </footer>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="{% static 'js/homepage.js' %}"></script>

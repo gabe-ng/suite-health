@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Custom_Meal, Custom_Circuit
 # from django.contrib.auth.decorators import login_required
-# from .forms import LoginForm, SignupForm
+from .forms import WorkoutForm 
 from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -52,6 +52,15 @@ def mealForm(request):
     else:
         return render(request, "fitness_app/meals.html")
 
+## delete ##
+def deleteMeal(request):
+    objects = Custom_Meal.objects.all()
+    return render('dashboard', username = user.username)
+    if request.method == "POST":
+        # Fetch list of items to delete, by ID
+        items_to_delete = request.POST.getlist('delete_items')
+        # Delete those items all in one go
+        Custom_Meal.objects.filter(pk__in=items_to_delete).delete()
 
 ############## LOG IN ############
 
@@ -139,11 +148,19 @@ def find_workout(request, muscle):
 
 # POST
 @csrf_exempt
-def save_workout(request, data):
-    print(request)
-    url = 'http://localhost:8000/homepage/'
-    r = requests.post(url=url, data=request.body)
-    # r = requests.post(url = API_ENDPOINT, data = data)
+def save_workout(request, username):
+    form = WorkoutForm(request.POST)
+    if request.method == 'POST':
+        print('in if', str(form))
+        if form.is_valid():
+            print('if')
+            workout = form.save(commit=False)
+            workout.user = request.user
+            workout.save()
+            return redirect('homepage')
+    else:
+        form = WorkoutForm()
+    return render(request, 'fitness_app/homepage.html', {'form':form})
 
 ################ FOOD API ############
 def find_food(request, food):
