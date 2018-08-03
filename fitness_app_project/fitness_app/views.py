@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Custom_Meal, Custom_Circuit, Workout, Food
 # from django.contrib.auth.decorators import login_required
-from .forms import WorkoutForm, FoodForm, MealForm
+from .forms import WorkoutForm, FoodForm, MealForm, CircuitForm
 from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -201,6 +201,7 @@ def find_food(request, food):
     r = requests.get(url=url)
     return HttpResponse(r, content_type='application/json')
 
+################ SAVE CUSTOM MEALS AND CIRCUTS ############
 @csrf_exempt
 def save_meal(request, username):
     form = MealForm(request.POST)
@@ -214,4 +215,19 @@ def save_meal(request, username):
             return redirect('homepage')
     else: 
         form = MealForm()
+    return render(request, 'fitness_app/homepage.html', {'form':form})
+
+@csrf_exempt
+def save_circuit(request, username):
+    form = CircuitForm(request.POST)
+    if request.method == 'POST':
+        print('in if', str(form))
+        if form.is_valid():
+            print('if')
+            circuit = form.save(commit=False)
+            circuit.user = request.user    
+            circuit.save()
+            return redirect('homepage')
+    else: 
+        form = CircuitForm()
     return render(request, 'fitness_app/homepage.html', {'form':form})

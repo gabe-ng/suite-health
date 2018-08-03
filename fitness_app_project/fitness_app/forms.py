@@ -1,5 +1,5 @@
 from django import forms
-from .models import Workout, Food, Custom_Meal
+from .models import Workout, Food, Custom_Meal, Custom_Circuit
 from django.contrib.auth.models import User
 
 class LoginForm(forms.Form):
@@ -45,3 +45,7 @@ class MealForm(forms.ModelForm):
         model = Custom_Meal
         fields = ('label', 'ingredients', 'instructions', 'portions', 'macros')
 
+class CircuitForm(forms.ModelForm):
+    class Meta: 
+        model = Custom_Circuit
+        fields = ('name', 'workouts')
