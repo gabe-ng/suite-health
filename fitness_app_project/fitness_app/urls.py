@@ -26,5 +26,6 @@ urlpatterns = [
     path('circuits/', views.circuitForm, name="circuits"),
     ############ CUSTOM MEALS AND CIRCUITS API ###################
     path('api/custommeals/', views.custom_meals, name="custommeals"),
+    path('api/meal/save/<username>', views.save_meal, name="save_meal"),
     path('api/customcircuits/', views.custom_circuits, name="customcircuit"),
 ]

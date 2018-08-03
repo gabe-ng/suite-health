@@ -217,11 +217,24 @@ const renderCustomMeals = response => {
   for (let i = 0; i < meals.length; i++) {
     let meal = meals[i];
     $("#meal-feed").append(`<div id="${meal.pk}">
-                  <h1>Name: ${meal.fields.label}</h1>
-                  <p>Ingredients: ${meal.fields.ingredients}</p>
-                  <p>Instructions: ${meal.fields.instructions}</p>
-                  <p>Portions: ${meal.fields.portions}</p>
-                  <p>Macros: ${meal.fields.macros}</p>
+                  <h1 data-label="${meal.fields.label}">Name: ${
+      meal.fields.label
+    }</h1>
+                  <p data-ingre="${meal.fields.ingredients}">Ingredients: ${
+      meal.fields.ingredients
+    }</p>
+                  <p data-intruc="${meal.fields.instructions}">Instructions: ${
+      meal.fields.instructions
+    }</p>
+                  <p data-portions="${meal.fields.portions}">Portions: ${
+      meal.fields.portions
+    }</p>
+                  <p data-macros="${meal.fields.macros}">Macros: ${
+      meal.fields.macros
+    }</p>
+                  <input value='Save this meal' type='submit' class='saveCustomMeal' id=${
+                    meal.pk
+                  } data-id='${meal.pk}'>
                     </div> <hr id="horizontal">`);
   }
 };
@@ -237,6 +250,24 @@ const renderCustomCircuits = response => {
                     </div> <hr id="horizontal">`);
   }
 };
+
+$("#meal-feed").on("click", ".saveCustomMeal", function() {
+  console.log("clicked");
+  console.log(username);
+  $.ajax({
+    type: "POST",
+    url: "/api/meal/save/" + username,
+    dataType: "application/json",
+    data: {
+      label: $(this).data("label"),
+      ingredients: $(this).data("ingre"),
+      instructions: $(this).data("instruc"),
+      portions: $(this).data("portions"),
+      macros: $(this).data("macros")
+    },
+    success: console.log("success from save meal")
+  });
+});
 
 $.ajax({
   method: "GET",
