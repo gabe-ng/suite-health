@@ -38,4 +38,4 @@ class WorkoutForm(forms.ModelForm):
 class FoodForm(forms.ModelForm):
     class Meta: 
         model = Food
-        fields = ('label', 'kcal', 'protein', 'fat', 'carbs')
+        fields = ('foodId', 'label', 'kcal', 'protein', 'fat', 'carbs')

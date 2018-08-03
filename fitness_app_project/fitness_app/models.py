@@ -36,6 +36,7 @@ class Custom_Circuit(models.Model):
 
 class Food(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='foods')
+    foodId = models.CharField(max_length=1000, default='')
     label = models.CharField(max_length=100)
     kcal = models.CharField(max_length=100)
     protein = models.CharField(max_length=100)
