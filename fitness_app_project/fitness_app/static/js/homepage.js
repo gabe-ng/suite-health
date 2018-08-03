@@ -35,16 +35,16 @@ const error = (err1, err2, err3) => {
 ///////////////// Render Food and Workout Searches ///////////////
 const renderFoodSuccess = response => {
   $("#search-results").empty();
-  $('#sresults').pagination({
+  $("#sresults").pagination({
     dataSource: response.hints,
     pageSize: 5,
     callback: function(data, pagination) {
-      console.log('data',data);
-        // template method of yourself
-         var html = template(data);
-         $('#search-results').html(html);
+      console.log("data", data);
+      // template method of yourself
+      var html = template(data);
+      $("#search-results").html(html);
     }
-  })
+  });
 };
 
 const template = response => {
@@ -63,22 +63,22 @@ const template = response => {
         `);
     }
   });
-}
+};
 
 const renderWorkoutSuccess = response => {
   workoutResponse = response.results;
-  console.log('Workout Res  = ', response)
+  console.log("Workout Res  = ", response);
   $("#search-results").empty();
-  $('#sresults').pagination({
+  $("#sresults").pagination({
     dataSource: workoutResponse,
     pageSize: 4,
     callback: function(data, pagination) {
-      console.log('data',data);
-        // template method of yourself
-         var html = template2(data);
-         $('#search-results').html(html);
+      console.log("data", data);
+      // template method of yourself
+      var html = template2(data);
+      $("#search-results").html(html);
     }
-  })
+  });
 };
 
 const template2 = workoutResponse => {
@@ -101,8 +101,7 @@ const template2 = workoutResponse => {
       } data-id='${workout.id}'>`
     );
   });
-}
-
+};
 
 //   response.results.forEach(workout => {
 //     $("#search-results").append(`
@@ -123,8 +122,6 @@ const template2 = workoutResponse => {
 //     );
 //   });
 // };
-
-
 
 /////////////////////// Save workouts and meals ////////////////////
 $("#search-results").on("click", ".saveWorkout", function() {
