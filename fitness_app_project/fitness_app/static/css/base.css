@@ -325,3 +325,28 @@ Homepage
 .hide {
   display: none;
 }
+
+/************* about page ***************/
+#about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.p-wrap {
+  text-align: left;
+}
+
+#about p {
+  max-width: 50%;
+}
+
+#about a {
+  color: white;
+}
+
+#about a:hover {
+  text-decoration: underline;
+}
