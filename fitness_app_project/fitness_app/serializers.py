@@ -24,7 +24,7 @@ class Custom_Circuit_Serializer(serializers.HyperlinkedModelSerializer):
 class FoodSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Food
-        fields = ('id','user','label','kcal','protein','fat','carbs')
+        fields = ('id','foodId', 'user','label','kcal','protein','fat','carbs')
         depth = 1
 
 
