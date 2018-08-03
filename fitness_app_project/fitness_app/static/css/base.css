@@ -185,6 +185,10 @@ Dashboard
   flex-direction: column;
 }
 
+.createBtns {
+  display: flex;
+}
+
 #createMeal {
   font-size: 1em;
   padding: 0.5em;
