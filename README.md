@@ -14,18 +14,6 @@
 * Django
 * PostgreSQL
 
-## Wireframes and User stories
-
-![alt text](/wireframes/ERD_diagram.jpg)
-
-![alt text](/wireframes/ERD_tables.jpg)
-
-![alt text](/wireframes/wireframe_home_page.jpg)
-
-![alt text](/wireframes/wireframe_landing.jpg)
-
-![alt text](/wireframes/wireframe_profile.jpg)
-
 ## Existing Features
 
 * User account creation/storage
@@ -44,6 +32,18 @@
 ## Installation and Deployment
 
 > To run this app on your local system, fork or clone the repository [here](https://github.com/gabe-ng/fitness-app). On your local system, navigate to the project directory within your terminal and set up a virtual environment as well as create a postgreSQL database named 'fitness_app'. Then change directories into the fitness_app folder containing your manage.py and install the necessary requirements located in the requirements.txt using `pip install`. After your environment is activated, run `python3 manage.py migrate` to migrate all the necessary models. Now run `python3 manage.py runserver` and the app should be accessible on localhost:8000 in your browser.
+
+## Wireframes and User stories
+
+![alt text](/wireframes/wireframe_landing.jpg)
+
+![alt text](/wireframes/wireframe_home_page.jpg)
+
+![alt text](/wireframes/wireframe_profile.jpg)
+
+![alt text](/wireframes/ERD_tables.jpg)
+
+![alt text](/wireframes/ERD_diagram.jpg)
 
 ## Contributors
 
