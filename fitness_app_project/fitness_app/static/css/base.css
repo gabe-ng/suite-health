@@ -58,8 +58,6 @@ input[type="submit"]:hover {
   color: #02243e;
 }
 
-<<<<<<< HEAD
-=======
 select,
 input[type="text"],
 input[type="password"] {
@@ -76,7 +74,6 @@ input[type="password"] {
   color: #19779c;
 }
 
->>>>>>> upstream/master
 footer {
   position: fixed;
   bottom: 0;

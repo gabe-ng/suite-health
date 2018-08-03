@@ -171,8 +171,6 @@ $("#search-results").on("click", ".saveWorkout", function() {
   });
 });
 
-<<<<<<< HEAD
-||||||| merged common ancestors
 // $("#find-button").on("click", function(e) {
 //   e.preventDefault();
 //   if ($("#search-type").val() === "food") {
@@ -198,7 +196,6 @@ $("#search-results").on("click", ".saveWorkout", function() {
 //   }
 // });
 
-=======
 // ################### SAVE FOOD ###########################################
 
 $("#search-results").on("click", ".saveFood", function() {
@@ -239,7 +236,6 @@ $("#search-results").on("click", ".saveFood", function() {
   });
 });
 
->>>>>>> 587bc8d2da61355ef6e4055ea1c9828b623ee328
 const renderCustomMeals = response => {
   let meals = JSON.parse(response.meals);
   console.log(meals);
