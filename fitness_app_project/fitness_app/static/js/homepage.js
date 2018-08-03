@@ -35,19 +35,19 @@ const error = (err1, err2, err3) => {
 ///////////////// Render Food and Workout Searches ///////////////
 const renderFoodSuccess = response => {
   $("#search-results").empty();
-  $('#sresults').pagination({
+  $("#sresults").pagination({
     dataSource: response.hints,
     pageSize: 5,
     callback: function(data, pagination) {
-      console.log('data',data);
-        // template method of yourself
-         var html = template(data);
-         $('#search-results').html(html);
+      console.log("data", data);
+      // template method of yourself
+      let html = foodTemplate(data);
+      $("#search-results").html(html);
     }
-  })
+  });
 };
 
-const template = response => {
+const foodTemplate = response => {
   $("#search-results").empty();
   response.forEach(food => {
     $("#search-results").append(`
@@ -63,25 +63,25 @@ const template = response => {
         `);
     }
   });
-}
+};
 
 const renderWorkoutSuccess = response => {
   workoutResponse = response.results;
-  console.log('Workout Res  = ', response)
+  console.log("Workout Res  = ", response);
   $("#search-results").empty();
-  $('#sresults').pagination({
+  $("#sresults").pagination({
     dataSource: workoutResponse,
     pageSize: 4,
     callback: function(data, pagination) {
-      console.log('data',data);
-        // template method of yourself
-         var html = template2(data);
-         $('#search-results').html(html);
+      console.log("data", data);
+      // template method of yourself
+      let html = workoutTemplate(data);
+      $("#search-results").html(html);
     }
-  })
+  });
 };
 
-const template2 = workoutResponse => {
+const workoutTemplate = workoutResponse => {
   $("#search-results").empty();
   workoutResponse.forEach(workout => {
     $("#search-results").append(`
@@ -101,30 +101,7 @@ const template2 = workoutResponse => {
       } data-id='${workout.id}'>`
     );
   });
-}
-
-
-//   response.results.forEach(workout => {
-//     $("#search-results").append(`
-//           <div id="${workout.id} class="rendered-workouts" "${resultCounter}">
-//             <h1>Author: ${workout.license_author}</h1>
-//             <p>Name: ${workout.name}</p>
-//             <p>Description: ${workout.description}</p>
-//             <ul id="muscle-group-${workout.id}"></ul>
-//           </div>
-//     `);
-//     workout.muscles.forEach(muscleNum => {
-//       $(`#muscle-group-${workout.id}`).append(`<li>${muscles[muscleNum]}</li>`);
-//     });
-//     $("#search-results").append(
-//       `<input value='Save this workout' type='submit' class='saveWorkout' id=${
-//         workout.id
-//       } data-id='${workout.id}'>`
-//     );
-//   });
-// };
-
-
+};
 
 $("#find-button").on("click", function(e) {
   e.preventDefault();
@@ -160,7 +137,7 @@ $("#search-results").on("click", ".saveWorkout", function() {
   let description = null;
   let muscles = null;
 
-  workoutResponse.results.forEach(workout => {
+  workoutResponse.forEach(workout => {
     if (workout.id === $(this).data("id")) {
       console.log(workout);
       workoutId = workout.id;
