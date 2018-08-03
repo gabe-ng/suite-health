@@ -36,6 +36,7 @@ class Custom_Circuit(models.Model):
 
 class Food(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='foods')
+    foodId = models.CharField(max_length=1000, default='')
     label = models.CharField(max_length=100)
     kcal = models.CharField(max_length=100)
     protein = models.CharField(max_length=100)
@@ -47,11 +48,8 @@ class Food(models.Model):
 
 class Workout(models.Model):
     workoutId = models.CharField(max_length=1000, default='')
-    # 'license_author' - who made the post
     author = models.CharField(max_length=100)
-    # 'name' - name of exercise
     name = models.CharField(max_length=100)
-    # 'description'
     description = models.TextField(null=True)
     # 'muscles'
     muscles = models.TextField(null=True, blank=True)

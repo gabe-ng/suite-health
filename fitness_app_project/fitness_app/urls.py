@@ -18,6 +18,7 @@ urlpatterns = [
     path('user/<username>/deleteworkout/<int:id>', views.delete_workout, name='delete_workout'),
     ############# FOOD API #################
     path('api/food/find/<str:food>', views.find_food, name='find_food'),
+    path('api/food/save/<username>', views.save_food, name='save_food'),
     path('meals/', views.mealForm, name="meals"),
     ############# WORKOUT API #################
     path('api/workout/find/<str:muscle>', views.find_workout, name='find_workout'),
