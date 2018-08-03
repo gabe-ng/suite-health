@@ -55,7 +55,7 @@ class Workout(models.Model):
     description = models.TextField(null=True)
     # 'muscles'
     muscles = models.TextField(null=True, blank=True)
-    
+
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='workouts', default='', null=True, blank=True)
 
     def __str__(self):
