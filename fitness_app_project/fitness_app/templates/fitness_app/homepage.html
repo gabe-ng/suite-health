@@ -40,10 +40,15 @@
                 <input id="find-button" class="searchSubmit" type="submit" value="Search!">
             </form>
         </section>
+
         {% csrf_token %}
-        <section id="search-results" class="search-results">
+        <div id="sresults" class="search-results">
+        <section id="search-results" >
+
             <p>Here's some stuff to search for...</p>
+
         </section>
+        </div>
     </section>
 </div>
 {% endblock %}

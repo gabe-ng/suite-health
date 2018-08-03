@@ -57,6 +57,25 @@ input[type="submit"]:hover {
   color: #02243e;
 }
 
+<<<<<<< HEAD
+=======
+select,
+input[type="text"],
+input[type="password"] {
+  font-size: 1em;
+  color: #2cdad9;
+  padding: 0.5em;
+  margin: 1.5em 0.5em 0.5em 0.5em;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #2cdad9;
+}
+
+::placeholder {
+  color: #19779c;
+}
+
+>>>>>>> upstream/master
 footer {
   position: fixed;
   bottom: 0;
@@ -246,9 +265,31 @@ Homepage
   height: 100%;
   width: 100%;
   padding-left: 5em;
-  max-width: 30em;
+  max-width: 40em;
+  box-sizing: border-box;
 }
 
+.ulClassName li {
+  display: inline;
+  padding: 0 20px;
+}
+
+.ulClassName li:first {
+  padding-left: 0;
+}
+
+.ulClassName{
+  display: block;
+  list-style-type: none;
+  margin: 0 auto 100px;
+  width: 100% !important;
+}
+
+.paginationjs {
+  max-width: 100px;
+  display: block !important;
+  margin: 0 auto !important;
+}
 /* Chatbot */
 .chatbot-container {
   display: flex;

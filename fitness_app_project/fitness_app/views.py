@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Custom_Meal, Custom_Circuit
+from .models import Custom_Meal, Custom_Circuit, Workout, Food
 # from django.contrib.auth.decorators import login_required
-from .forms import WorkoutForm 
+from .forms import WorkoutForm
 from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -10,6 +10,8 @@ import json
 from django.contrib.auth.models import User
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
+
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 def landing(request):
     return render(request, "fitness_app/landing.html", {})
@@ -55,13 +57,23 @@ def mealForm(request):
 ## delete ##
 def delete_meal(request, username, id):
     user = User.objects.get(username = username)
-    circuit = Custom_Meal.objects.get(id=id).delete()
+    meal = Custom_Meal.objects.get(id=id).delete()
     return redirect('dashboard', username = user.username)
 
 
 def delete_circuit(request, username, id):
     user = User.objects.get(username = username)
     circuit = Custom_Circuit.objects.get(id=id).delete()
+    return redirect('dashboard', username = user.username)
+
+def delete_workout(request, username, id):
+    user = User.objects.get(username = username)
+    workout = Workout.objects.get(id=id).delete()
+    return redirect('dashboard', username = user.username)
+
+def delete_food(request, username, id):
+    user = User.objects.get(username = username)
+    food = Food.objects.get(id=id).delete()
     return redirect('dashboard', username = user.username)
 
 ############## LOG IN ############
@@ -137,6 +149,8 @@ def custom_circuits(request):
 def dashboard(request, username):
     circuits = Custom_Circuit.objects.filter(user=request.user)
     meals = Custom_Meal.objects.filter(user=request.user)
+    workouts = Workout.objects.filter(user=request.user)
+    foods = Food.objects.filter(user=request.user)
     return render(request, 'fitness_app/dashboard.html', {'circuits':circuits, 'meals':meals})
 
 ################ WORKOUT API ############
@@ -183,7 +197,6 @@ def save_food(request, username):
 
 ################ FOOD API ############
 def find_food(request, food):
-    print(food)
     url = 'https://api.edamam.com/api/food-database/parser?ingr='+ food + '&app_id=2d7d9644&app_key=8e911eeff3b68f04eafd1fffeaf16401'
     r = requests.get(url=url)
     return HttpResponse(r, content_type='application/json')

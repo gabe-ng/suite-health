@@ -31,5 +31,5 @@ class FoodSerializer(serializers.HyperlinkedModelSerializer):
 class WorkoutSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Workout
-        fields = ('id','author','name','description','muscles')
+        fields = ('id','author','name','description', 'muscles')
         depth = 1     
