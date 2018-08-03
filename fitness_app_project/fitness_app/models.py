@@ -47,13 +47,9 @@ class Food(models.Model):
 
 class Workout(models.Model):
     workoutId = models.CharField(max_length=1000, default='')
-    # 'license_author' - who made the post
     author = models.CharField(max_length=100)
-    # 'name' - name of exercise
     name = models.CharField(max_length=100)
-    # 'description'
     description = models.TextField(null=True)
-    # 'muscles'
     muscles = models.TextField(null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='workouts', default='', null=True, blank=True)
 

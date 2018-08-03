@@ -164,6 +164,23 @@ def save_workout(request, username):
         form = WorkoutForm()
     return render(request, 'fitness_app/homepage.html', {'form':form})
 
+@csrf_exempt
+def save_food(request, username):
+    form = FoodForm(request.POST)
+    if request.method == 'POST':
+        print('in if', str(form))
+        if form.is_valid():
+            print('if')
+            food = form.save(commit=False)
+            food.user = request.user    
+            food.save()
+            return redirect('homepage')
+    else: 
+        form = FoodForm()
+    return render(requet, 'fitness_app/homepage.html', {'form':form})
+
+
+
 ################ FOOD API ############
 def find_food(request, food):
     print(food)

@@ -1,22 +1,23 @@
 {% extends 'fitness_app/base.html' %} {% block content %}
 <div class="mainWrapper">
 
-<div class="userInfo">
-  <h2>User Info</h2>
-  <div id="userInformation"></div>
-  <div class="createBtns">
-    <button id="createCircuit"><a href="{% url 'circuits' %}">create circuit</a></button>
-    <button id="createMeal"><a href="{% url 'meals' %}">create meal</a></button>
+  <div class="userInfo">
+    <h2>User Info</h2>
+    <div id="userInformation"></div>
+    <div class="createBtns">
+      <a id="createCircuit" href="{% url 'circuits' %}">Create Circuit</a>
+      <a id="createMeal" href="{% url 'meals' %}">Create Meal</a>
+    </div>
   </div>
-</div>
 
   <div class="healthWrapper">
     <div class="savedFood">
       <h3>Saved Workouts</h3>
       <div id="workoutList">
         {% for circuit in circuits %}
-          <p>{{ circuit.name }} :
-          <a href="{% url 'delete_circuit' username=user.username id=circuit.id %}">delete</a></p>
+        <p>{{ circuit.name }} :
+          <a href="{% url 'delete_circuit' username=user.username id=circuit.id %}">delete</a>
+        </p>
         {% endfor %}
       </div>
     </div>
@@ -24,14 +25,15 @@
       <h3>Saved Meals</h3>
       <div id="mealList">
         {% for meal in meals %}
-          <p>{{ meal.label }} :
-          <a href="{% url 'delete_meal' username=user.username id=meal.id %}">delete</a></p>
+        <p>{{ meal.label }} :
+          <a href="{% url 'delete_meal' username=user.username id=meal.id %}">delete</a>
+        </p>
         {% endfor %}
       </div>
     </div>
   </div>
-<div id="selectedInfo">
+  <div id="selectedInfo">
 
-</div>
+  </div>
 </div>
 {% endblock %}

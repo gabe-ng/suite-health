@@ -76,113 +76,6 @@ const renderWorkoutSuccess = response => {
   });
 };
 
-const renderCustomCircuits = response => {
-  let circuits = JSON.parse(response.circuits);
-  console.log(circuits);
-  for (let i = 0; i < circuits.length; i++) {
-    let circuit = circuits[i];
-    $("#circuit-feed").append(`<div id="${circuit.pk}">
-                  <h1>Name: ${circuit.fields.name}</h1>
-                  <p>Workouts: ${circuit.fields.workouts}</p>
-                    </div><hr>`);
-  }
-};
-
-const renderCustomMeals = response => {
-  let meals = JSON.parse(response.meals);
-  console.log(meals);
-  for (let i = 0; i < meals.length; i++) {
-    let meal = meals[i];
-    $("#meal-feed").append(`<div id="${meal.pk}">
-                  <h1>Name: ${meal.fields.label}</h1>
-                  <p>Ingredients: ${meal.fields.ingredients}</p>
-                  <p>Instructions: ${meal.fields.instructions}</p>
-                  <p>Portions: ${meal.fields.portions}</p>
-                  <p>Macros: ${meal.fields.macros}</p>
-                    </div><hr>`);
-  }
-};
-
-// ####################################### AJAX CALLS ############################################
-
-$("#find-button").on("click", function(e) {
-  e.preventDefault();
-  if ($("#search-type").val() === "food") {
-    let foodInput = $("#food-selection").val();
-    let food = foodInput.replace(/" "/g, "%20");
-    console.log(food);
-    $.ajax({
-      method: "GET",
-      url: "/api/food/find/" + food,
-      success: renderFoodSuccess,
-      error: error
-    });
-  } else if ($(".form-control").val() === "workouts") {
-    let muscle = $("#muscle-selection").val();
-    console.log("invoked");
-    $.ajax({
-      method: "GET",
-      url: "/api/workout/find/" + muscle,
-      success: renderWorkoutSuccess,
-      error: error
-    });
-  }
-});
-
-$("#find-button").on("click", function(e) {
-  e.preventDefault();
-  if ($("#search-type").val() === "food") {
-    let foodInput = $("#food-selection").val();
-    console.log(foodInput);
-    let food = encodeURIComponent(foodInput);
-    console.log(food);
-    $.ajax({
-      method: "GET",
-      url: "/api/food/find/" + food,
-      success: renderFoodSuccess,
-      error: error
-    });
-  } else if ($(".form-control").val() === "workouts") {
-    let muscle = $("#muscle-selection").val();
-    console.log("invoked");
-    $.ajax({
-      method: "GET",
-      url: "/api/workout/find/" + muscle,
-      success: renderWorkoutSuccess,
-      error: error
-    });
-  }
-});
-
-$.ajax({
-  method: "GET",
-  url: "/api/custommeals/",
-  success: renderCustomMeals,
-  error: error
-});
-
-$.ajax({
-  method: "GET",
-  url: "/api/customcircuits/",
-  success: renderCustomCircuits,
-  error: error
-});
-
-///////////////////////////// Render Proper Form /////////////////
-$("#search-type").on("change", function() {
-  console.log("hello");
-  console.log(this);
-  let val = $(this).val();
-  console.log(val);
-  if (val == "workouts") {
-    $("#muscle-select-span").css("display", "inline-block");
-    $("#food-selection").css("display", "none");
-  } else if (val == "food") {
-    $("#food-selection").css("display", "block");
-    $("#muscle-select-span").css("display", "none");
-  }
-});
-
 /////////////////////// Save workouts and meals ////////////////////
 $("#search-results").on("click", ".saveWorkout", function() {
   console.log("in search");
@@ -218,4 +111,85 @@ $("#search-results").on("click", ".saveWorkout", function() {
     dataType: "application/json",
     success: console.log("success")
   });
+});
+
+// $("#find-button").on("click", function(e) {
+//   e.preventDefault();
+//   if ($("#search-type").val() === "food") {
+//     let foodInput = $("#food-selection").val();
+//     console.log(foodInput);
+//     let food = encodeURIComponent(foodInput);
+//     console.log(food);
+//     $.ajax({
+//       method: "GET",
+//       url: "/api/food/find/" + food,
+//       success: renderFoodSuccess,
+//       error: error
+//     });
+//   } else if ($(".form-control").val() === "workouts") {
+//     let muscle = $("#muscle-selection").val();
+//     console.log("invoked");
+//     $.ajax({
+//       method: "GET",
+//       url: "/api/workout/find/" + muscle,
+//       success: renderWorkoutSuccess,
+//       error: error
+//     });
+//   }
+// });
+
+const renderCustomMeals = response => {
+  let meals = JSON.parse(response.meals);
+  console.log(meals);
+  for (let i = 0; i < meals.length; i++) {
+    let meal = meals[i];
+    $("#meal-feed").append(`<div id="${meal.pk}">
+                  <h1>Name: ${meal.fields.label}</h1>
+                  <p>Ingredients: ${meal.fields.ingredients}</p>
+                  <p>Instructions: ${meal.fields.instructions}</p>
+                  <p>Portions: ${meal.fields.portions}</p>
+                  <p>Macros: ${meal.fields.macros}</p>
+                    </div><hr>`);
+  }
+};
+
+const renderCustomCircuits = response => {
+  let circuits = JSON.parse(response.circuits);
+  console.log(circuits);
+  for (let i = 0; i < circuits.length; i++) {
+    let circuit = circuits[i];
+    $("#circuit-feed").append(`<div id="${circuit.pk}">
+                  <h1>Name: ${circuit.fields.name}</h1>
+                  <p>Workouts: ${circuit.fields.workouts}</p>
+                    </div><hr>`);
+  }
+};
+
+$.ajax({
+  method: "GET",
+  url: "/api/custommeals/",
+  success: renderCustomMeals,
+  error: error
+});
+
+$.ajax({
+  method: "GET",
+  url: "/api/customcircuits/",
+  success: renderCustomCircuits,
+  error: error
+});
+
+///////////////////////////// Render Proper Form /////////////////
+$("#search-type").on("change", function() {
+  console.log("hello");
+  console.log(this);
+  let val = $(this).val();
+  console.log(val);
+  if (val == "workouts") {
+    $("#muscle-select-span").css("display", "inline-block");
+    $("#food-selection").css("display", "none");
+  } else if (val == "food") {
+    $("#food-selection").css("display", "block");
+    $("#muscle-select-span").css("display", "none");
+  }
 });
