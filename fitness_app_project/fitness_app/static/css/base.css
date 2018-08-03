@@ -52,6 +52,7 @@ input[type="submit"] {
   border: 1px solid #2cdad9;
 }
 
+
 input[type="submit"]:hover {
   background-color: #2cdad9;
   color: #02243e;
@@ -206,6 +207,11 @@ Dashboard
 Homepage
 ================================================*/
 
+#horizontal {
+  opacity: .5;
+  border-color:#2cdad9;
+}
+
 #username {
   display: none;
 }
@@ -228,7 +234,7 @@ Homepage
   background-color: #02243e;
   height: 100%;
   width: 100%;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #2cdad9;
   overflow: auto;
 }
 
@@ -280,17 +286,15 @@ Homepage
 }
 
 .ulClassName{
-  display: block;
+  display: flex;
   list-style-type: none;
   margin: 0 auto 100px;
-  width: 100% !important;
 }
 
-.paginationjs {
-  max-width: 100px;
-  display: block !important;
-  margin: 0 auto !important;
+.paginationjs{
+  display: flex;
 }
+
 /* Chatbot */
 .chatbot-container {
   display: flex;
