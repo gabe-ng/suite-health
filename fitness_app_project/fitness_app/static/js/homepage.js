@@ -5,6 +5,7 @@ $(".chatbot-icon").on("click", function() {
 });
 
 let workoutResponse = null;
+let foodResponse = null;
 let username = document.getElementById("username");
 
 let muscles = {
@@ -34,9 +35,10 @@ const error = (err1, err2, err3) => {
 
 ///////////////// Render Food and Workout Searches ///////////////
 const renderFoodSuccess = response => {
+  foodResponse = response.hints;
   $("#search-results").empty();
   $("#sresults").pagination({
-    dataSource: response.hints,
+    dataSource: foodResponse,
     pageSize: 5,
     callback: function(data, pagination) {
       console.log("data", data);
@@ -62,6 +64,11 @@ const foodTemplate = response => {
             <li>${nutrient} : ${measure.toFixed(2)}</li>
         `);
     }
+    $("#search-results").append(
+      `<input value='Save this Food' type='submit' class='saveFood' id=${
+        food.food.id
+      } data-id='${food.food.id}'>`
+    );
   });
 };
 
@@ -164,30 +171,45 @@ $("#search-results").on("click", ".saveWorkout", function() {
   });
 });
 
-// $("#find-button").on("click", function(e) {
-//   e.preventDefault();
-//   if ($("#search-type").val() === "food") {
-//     let foodInput = $("#food-selection").val();
-//     console.log(foodInput);
-//     let food = encodeURIComponent(foodInput);
-//     console.log(food);
-//     $.ajax({
-//       method: "GET",
-//       url: "/api/food/find/" + food,
-//       success: renderFoodSuccess,
-//       error: error
-//     });
-//   } else if ($(".form-control").val() === "workouts") {
-//     let muscle = $("#muscle-selection").val();
-//     console.log("invoked");
-//     $.ajax({
-//       method: "GET",
-//       url: "/api/workout/find/" + muscle,
-//       success: renderWorkoutSuccess,
-//       error: error
-//     });
-//   }
-// });
+// ################### SAVE FOOD ###########################################
+
+$("#search-results").on("click", ".saveFood", function() {
+  console.log("in search");
+  // if workout id matches the input button id, save that work
+  let foodId = null;
+  let label = null;
+  let kcal = null;
+  let protein = null;
+  let fat = null;
+  let carbs = null;
+
+  foodResponse.forEach(food => {
+    if (food.food.id === $(this).data("id")) {
+      console.log(food);
+      foodId = food.food.id;
+      label = food.food.label;
+      kcal = food.food.nutrients.ENERC_KCAL;
+      protein = food.food.nutrients.PROCNT;
+      fat = food.food.nutrients.FAT;
+      carbs = food.food.nutrients.CHOCDF;
+    }
+  });
+  $.ajax({
+    type: "POST",
+    url: "/api/food/save/" + username,
+    dataType: "application/json",
+    data: {
+      foodId: foodId,
+      label: label,
+      kcal: kcal,
+      protein: protein,
+      fat: fat,
+      carbs: carbs
+    },
+    dataType: "application/json",
+    success: console.log("success from save food")
+  });
+});
 
 const renderCustomMeals = response => {
   let meals = JSON.parse(response.meals);
