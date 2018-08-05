@@ -234,6 +234,7 @@ Homepage
   height: 100%;
   width: 100%;
   border-bottom: 1px solid #2cdad9;
+  border-right: 1px solid #2cdad9;
   overflow: auto;
 }
 
@@ -242,6 +243,7 @@ Homepage
   height: 100%;
   width: 100%;
   overflow: auto;
+  border-right: 1px solid #2cdad9;
 }
 
 .search-content {
@@ -300,6 +302,7 @@ Homepage
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  z-index: -1;
 }
 
 .chat {
@@ -336,7 +339,6 @@ Homepage
 }
 
 .p-wrap {
-
   text-align: center;
 }
 
